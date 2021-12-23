@@ -3,7 +3,9 @@ const AniList = require('./AniList.js')
 //const Anime = require('./Anime.js')
 
 
-User.hasOne(AniList, { foreignKey: 'uid' })
-AniList.belongsTo(User, { foreignKey: 'uid' })
+User.hasMany(Anime, { foreignKey: 'uid' })
+Anime.belongsTo(User, { foreignKey: 'uid' })
+User.hasMany(Friend, { foreignKey: 'uid' })
+// Friend.belongsToMany(User,{ foreignKey: 'uid'}) 
 
 module.exports = { User, AniList }
