@@ -32,13 +32,20 @@
   </div>
 
 
-
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script>
+
+  
+
+
+
+
+
+
+
 
     document.getElementById(`search`).addEventListener(`click`, event => {
       event.preventDefault()
@@ -63,6 +70,8 @@
           for (let searchIndex = 0; searchIndex < 5; searchIndex++) {
             let searchResults = search[searchIndex];
 
+            let searchId = searchResults.mal_id
+
             let searchURL = searchResults.image_url;
             let searchElem = document.createElement('div');
             searchElem.classList = "col";
@@ -71,33 +80,37 @@
             searchElem.innerHTML =
               `
               <h2>${searchResults.title}</h2><img src='${searchURL}' alt='${searchResults.title}' style="width:75%;">
-              <h4>Score: ${searchResults.score}</h4>
+              <h4>Rating: ${searchResults.score}</h4>
               <p>Synopsis: ${searchResults.synopsis}</p>
-              <button class ="btn btn-primary">"Add to my List"</button>
+              <button class ="save btn-btn-primary" data-index="${searchId}">"Add to my List"</button>
               `;
 
+            document.addEventListener('click', event => {
+              const index = parseInt(event.target.dataset.index)
+              if (event.target.className === 'save btn-btn-primary' & index === searchId) {
+                
+                console.log(searchResults)
+                const anime = {
+                  title: `${searchResults.title}`,
+                  image: `${searchURL}`,
+                  rating: `${searchResults.score}`,
+                  synopsis: `${searchResults.synopsis}`
+                }
+                console.log(anime)
+                // console.log(anime)
+                // axios.post('/api/giphy', anime)
+                // .then(() => console.log(`anime saved`))
+                // .catch(err => console.log(err))
+                // event.target.parentNode.style.display = "none";
+              }
+            });
 
-
-            let saveBtn = document.createElement('button');
-            saveBtn.classList = "btn btn-primary";
-            saveBtn.innerHTML = "Save";
-            saveBtn.dataset.url = searchURL;
-            // saveBtn.addEventListener('click', event => {
-            //   const jif = {
-            //     name: `${searchResults.title}`,
-            //     image: `${searchURL}`
-            //   }
-            //   console.log(jif)
-            //   axios.post('/api/giphy', jif)
-            //     .then(() => console.log(`giphy saved`))
-            //     .catch(err => console.log(err))
-            //   // event.target.parentNode.style.display = "none";
-            // });
-
-
+        
             document.getElementById(`results`).append(searchElem)
             // document.getElementById(`results`).append(saveBtn)
           }
+
+
 
           document.getElementById('more').addEventListener('click', event => {
             document.getElementById('results').innerHTML = ''
@@ -117,6 +130,30 @@
               <p>Synopsis: ${searchResults.synopsis}</p>
               <button class ="btn btn-primary">"Add to my List"</button>
               `;
+              
+
+              document.addEventListener('click', event => {
+              const index = parseInt(event.target.dataset.index)
+              if (event.target.className === 'save btn-btn-primary' & index === searchId) {
+
+                console.log(searchResults)
+                const anime = {
+                  title: `${searchResults.title}`,
+                  image: `${searchURL}`,
+                  rating: `${searchResults.score}`,
+                  synopsis: `${searchResults.synopsis}`
+                }
+                console.log(anime)
+                // console.log(anime)
+                // axios.post('/api/giphy', anime)
+                // .then(() => console.log(`anime saved`))
+                // .catch(err => console.log(err))
+                // event.target.parentNode.style.display = "none";
+              }
+            });
+
+
+
 
               document.getElementById(`results`).append(searchElem2)
 
@@ -127,7 +164,7 @@
         .catch(err => console.log(err))
     })
 
-
+      
 
 
 
