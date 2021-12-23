@@ -4,7 +4,7 @@ const sequelize = require('../db')
 class Friend extends Model { }
 Friend.init({
   list: {
-    type: DataTypes.ARRAY,
+    type: DataTypes.STRING,
     allowNull: true
   },
 }, { sequelize, modelName: 'friend' })

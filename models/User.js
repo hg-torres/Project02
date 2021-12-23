@@ -24,7 +24,7 @@ const User = pls.defineUser(sequelize, {
   allowNull: false
  },
  friends: {
-  type: DataTypes.ARRAY,
+  type: DataTypes.STRING,
   allowNull: true
  }
 })
