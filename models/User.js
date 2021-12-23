@@ -22,10 +22,6 @@ const User = pls.defineUser(sequelize, {
   email: {
     type: DataTypes.STRING,
     allowNull: false
-  },
-  friends: {
-    type: DataTypes.ARRAY,
-    allowNull: true
   }
 })
 

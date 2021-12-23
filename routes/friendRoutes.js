@@ -5,7 +5,7 @@ const passport = require('passport')
 // GET all Animes
 router.get('/animes', passport.authenticate('jwt'), async function (req, res) {
   const animes = await Anime.findAll({ include: [User] })
-  res.json (animes)
+  res.json(animes)
 })
 
 // Post one Anime
@@ -14,7 +14,7 @@ router.post(' /animes', passport.authenticate('jwt'), async function ({ body, us
     ...body,
     uid: user.id
   })
-  res.json (anime)
+  res.json(anime)
 })
 
 // DELETE one Anime
