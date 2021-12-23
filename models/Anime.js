@@ -12,7 +12,7 @@ Anime.init({
     allowNull: false
   },
   rating: {
-    type: DataTypes.STRING,
+    type: DataTypes.FLOAT,
     allowNull: false
   },
   synopsis: {
