@@ -19,6 +19,6 @@ Anime.init({
     type: DataTypes.STRING,
     allowNull: false
   }
-}, { sequelize, modelName: 'Anime' })
+}, { sequelize, modelName: 'anime' })
 
 module.exports = Anime

@@ -1,12 +1,12 @@
 const { Model, DataTypes } = require('sequelize')
 const sequelize = require('../db')
 
-class AniList extends Model { }
-AniList.init({
+class Friend extends Model { }
+Friend.init({
   list: {
     type: DataTypes.ARRAY,
     allowNull: true
   },
-}, { sequelize, modelName: 'AniList' })
+}, { sequelize, modelName: 'friend' })
 
-module.exports = AniList
+module.exports = Friend
