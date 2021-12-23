@@ -38,22 +38,16 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script>
 
-  
-
-
-
-
-
-
-
-
+    // click even for searching anime
     document.getElementById(`search`).addEventListener(`click`, event => {
       event.preventDefault()
-      document.getElementById('results').innerHTML = ''
       const searchInfo = document.getElementById(`searchInfo`).value
 
-
+    // removes previous search from innerHTML 
+      document.getElementById('results').innerHTML = ''
       document.getElementById('more').innerHTML = ''
+
+    // adds more results button after first search (currently only using 10 results)
       let moreResults = document.createElement('button');
       moreResults.classList = "btn btn-primary";
       moreResults.innerHTML = "More Results";
@@ -61,7 +55,7 @@
       document.getElementById('more').append(moreResults)
 
 
-
+    // get request for anime
       axios.get(` https://api.jikan.moe/v3/search/anime?q=${searchInfo}&page=1`)
         .then(res => {
           console.log(res.data)
@@ -69,14 +63,12 @@
           console.log(search)
           for (let searchIndex = 0; searchIndex < 5; searchIndex++) {
             let searchResults = search[searchIndex];
-
             let searchId = searchResults.mal_id
-
             let searchURL = searchResults.image_url;
             let searchElem = document.createElement('div');
             searchElem.classList = "col";
 
-
+            // what is going to be appended on the page from API information
             searchElem.innerHTML =
               `
               <h2>${searchResults.title}</h2><img src='${searchURL}' alt='${searchResults.title}' style="width:75%;">
@@ -85,6 +77,7 @@
               <button class ="save btn-btn-primary" data-index="${searchId}">"Add to my List"</button>
               `;
 
+            // click even to save and push to database using ID/data-index
             document.addEventListener('click', event => {
               const index = parseInt(event.target.dataset.index)
               if (event.target.className === 'save btn-btn-primary' & index === searchId) {
@@ -107,11 +100,11 @@
 
         
             document.getElementById(`results`).append(searchElem)
-            // document.getElementById(`results`).append(saveBtn)
+            
           }
 
 
-
+          // get request for second anime search (same as above)
           document.getElementById('more').addEventListener('click', event => {
             document.getElementById('results').innerHTML = ''
             document.getElementById('more').innerHTML = ''
@@ -151,9 +144,6 @@
                 // event.target.parentNode.style.display = "none";
               }
             });
-
-
-
 
               document.getElementById(`results`).append(searchElem2)
 
