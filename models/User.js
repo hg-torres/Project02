@@ -11,10 +11,10 @@ const User = pls.defineUser(sequelize, {
     type: DataTypes.STRING,
     allowNull: false
   },
-  profile: {
-    type: DataTypes.STRING,
-    allowNull: true
-  },
+  // profile: {
+  //   type: DataTypes.STRING,
+  //   allowNull: true
+  // },
   username: {
     type: DataTypes.STRING,
     allowNull: false
