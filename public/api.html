@@ -43,11 +43,11 @@
       event.preventDefault()
       const searchInfo = document.getElementById(`searchInfo`).value
 
-    // removes previous search from innerHTML 
+      // removes previous search from innerHTML 
       document.getElementById('results').innerHTML = ''
       document.getElementById('more').innerHTML = ''
 
-    // adds more results button after first search (currently only using 10 results)
+      // adds more results button after first search (currently only using 10 results)
       let moreResults = document.createElement('button');
       moreResults.classList = "btn btn-primary";
       moreResults.innerHTML = "More Results";
@@ -55,7 +55,7 @@
       document.getElementById('more').append(moreResults)
 
 
-    // get request for anime
+      // get request for anime
       axios.get(` https://api.jikan.moe/v3/search/anime?q=${searchInfo}&page=1`)
         .then(res => {
           console.log(res.data)
@@ -81,7 +81,6 @@
             document.addEventListener('click', event => {
               const index = parseInt(event.target.dataset.index)
               if (event.target.className === 'save btn-btn-primary' & index === searchId) {
-                
                 console.log(searchResults)
                 const anime = {
                   title: `${searchResults.title}`,
@@ -91,16 +90,16 @@
                 }
                 console.log(anime)
                 // console.log(anime)
-                // axios.post('/api/giphy', anime)
-                // .then(() => console.log(`anime saved`))
-                // .catch(err => console.log(err))
-                // event.target.parentNode.style.display = "none";
+                axios.post('/api/animes', anime)
+                  .then(() => console.log(`anime saved`))
+                  .catch(err => console.log(err))
+
               }
             });
 
-        
+
             document.getElementById(`results`).append(searchElem)
-            
+
           }
 
 
@@ -123,27 +122,27 @@
               <p>Synopsis: ${searchResults.synopsis}</p>
               <button class ="btn btn-primary">"Add to my List"</button>
               `;
-              
+
 
               document.addEventListener('click', event => {
-              const index = parseInt(event.target.dataset.index)
-              if (event.target.className === 'save btn-btn-primary' & index === searchId) {
+                const index = parseInt(event.target.dataset.index)
+                if (event.target.className === 'save btn-btn-primary' & index === searchId) {
 
-                console.log(searchResults)
-                const anime = {
-                  title: `${searchResults.title}`,
-                  image: `${searchURL}`,
-                  rating: `${searchResults.score}`,
-                  synopsis: `${searchResults.synopsis}`
+                  console.log(searchResults)
+                  const anime = {
+                    title: `${searchResults.title}`,
+                    image: `${searchURL}`,
+                    rating: `${searchResults.score}`,
+                    synopsis: `${searchResults.synopsis}`
+                  }
+                  console.log(anime)
+                  // console.log(anime)
+                  axios.post('/api/animes', anime)
+                    .then(() => console.log(`anime saved`))
+                    .catch(err => console.log(err))
+
                 }
-                console.log(anime)
-                // console.log(anime)
-                // axios.post('/api/giphy', anime)
-                // .then(() => console.log(`anime saved`))
-                // .catch(err => console.log(err))
-                // event.target.parentNode.style.display = "none";
-              }
-            });
+              });
 
               document.getElementById(`results`).append(searchElem2)
 
@@ -154,7 +153,6 @@
         .catch(err => console.log(err))
     })
 
-      
 
 
 
