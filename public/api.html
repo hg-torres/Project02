@@ -91,7 +91,11 @@
                 }
                 console.log(anime)
                 // console.log(anime)
-                axios.post('/api/animes', anime)
+                axios.post('/api/animes', anime, {
+                  headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                  }
+                })
                 .then(() => console.log(`anime saved`))
                 .catch(err => console.log(err))
                
@@ -110,18 +114,18 @@
             document.getElementById('more').innerHTML = ''
             for (let searchIndex = 6; searchIndex < 11; searchIndex++) {
               let searchResults = search[searchIndex];
-
+              let searchId = searchResults.mal_id
               let searchURL = searchResults.image_url;
               let searchElem2 = document.createElement('div');
               searchElem2.classList = "col";
 
 
               searchElem2.innerHTML =
-                `
+              `
               <h2>${searchResults.title}</h2><img src='${searchURL}' alt='${searchResults.title}' style="width:75%;">
-              <h4>Score: ${searchResults.score}</h4>
+              <h4>Rating: ${searchResults.score}</h4>
               <p>Synopsis: ${searchResults.synopsis}</p>
-              <button class ="btn btn-primary">"Add to my List"</button>
+              <button class ="save btn-btn-primary" data-index="${searchId}">"Add to my List"</button>
               `;
               
 
@@ -138,7 +142,12 @@
                 }
                 console.log(anime)
                 // console.log(anime)
-                axios.post('/api/animes', anime)
+                axios.post('/api/animes', anime, {
+                  headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                  }
+                })
+                
                 .then(() => console.log(`anime saved`))
                 .catch(err => console.log(err))
                 
