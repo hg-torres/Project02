@@ -9,9 +9,8 @@ async function seeder() {
   console.log('----Seeding Data----')
 
   try {
-    await User.register(new User({ username: 'johndoe', email: 'johndoe@gmail.com' }), 'password1234')
-    await User.register(new User({ username: 'janedoe', email: 'janedoe@gmail.com' }), 'password4321')
-    await User.register(new User({ firstName: 'jack', lastName: 'doe',username: 'jackdoe', email: 'jackdoe@gmail.com' }), 'rootroot')
+    await User.register(new User({ username: 'johndoe', email: 'johndoe@gmail.com' }), '1234')
+   
     await Anime.bulkCreate(require('./animeSeed.js'))
   } catch (err) {
     console.log(err)
