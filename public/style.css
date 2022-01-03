@@ -1,24 +1,13 @@
 body {
-<<<<<<< HEAD
  background-image: url('/assets/Background\ Img.jpg');
  margin: 15px;
  margin-top: 50px;
-=======
-  background-image: url('assets/BackgroundImg.jpg');
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  margin: 15px;
-  margin-top: 50px;
->>>>>>> 21e0d263f704d63d747a50b9d0fe047b0a368b34
 
 }
 
 .login-form,
 .login-form * {
 
-<<<<<<< HEAD
  box-sizing: border-box;
  font-family: sans-serif;
 }
@@ -47,43 +36,12 @@ body {
  max-width: 100%;
  max-height: 100%;
  margin: 0 auto;
-=======
-  box-sizing: border-box;
-  font-family: sans-serif;
-}
-
-.login-form {
-  max-width: 350px;
-  margin: 0 auto;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0 0 15px rgba (0, 0, 0, 0.15);
-  padding: 15px;
-  background: gold;
-}
-
-.login-form_logo {
-  padding: 10px;
-  background: rgba (0, 0, 0 0.25);
-}
-
-.login-form_logo {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  margin: 0 auto;
->>>>>>> 21e0d263f704d63d747a50b9d0fe047b0a368b34
 }
 
 
 .register-form,
 .register-form * {
 
-<<<<<<< HEAD
  box-sizing: border-box;
  font-family: sans-serif;
 }
@@ -107,29 +65,4 @@ body {
  max-width: 100%;
  max-height: 100%;
  margin: 0 auto;
-=======
-  box-sizing: border-box;
-  font-family: sans-serif;
-}
-
-.register-form {
-  max-width: 350px;
-  margin: 0 auto;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0 0 15px rgba (0, 0, 0, 0.15);
-  padding: 15px;
-  background: gold;
-}
-
-.register-form_logo {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  margin: 0 auto;
->>>>>>> 21e0d263f704d63d747a50b9d0fe047b0a368b34
 }
