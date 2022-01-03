@@ -4,17 +4,19 @@ const passport = require('passport')
 
 // GET all Animes
 router.get('/animes', passport.authenticate('jwt'), async function (req, res) {
-  const animes = await Anime.findAll(/*{ include: [User] }*/)
+  const animes = await Anime.findAll({ include: [User] })
   res.json (animes)
 })
 
 // Post one Anime
-router.post(' /animes', passport.authenticate('jwt'), async function ({ body, user }, res) {
+router.post('/animes', passport.authenticate('jwt'), async function ({ body, user }, res) {
   const anime = await Anime.create({
     ...body,
     uid: user.id
   })
-  res.json (anime)
+  res.sendStatus(200)
+  // res.json (anime)
+
 })
 
 // DELETE one Anime
