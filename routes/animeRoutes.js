@@ -4,7 +4,7 @@ const passport = require('passport')
 
 // GET all Animes
 router.get('/animes', passport.authenticate('jwt'), async function (req, res) {
-  const animes = await Anime.findAll({ include: [User] })
+  const animes = await Anime.findAll(/*{ include: [User] }*/)
   res.json (animes)
 })
 
