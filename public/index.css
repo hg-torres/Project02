@@ -18,3 +18,14 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+
+.nav-wrapper {
+  align-items: center;
+}
+
+.brand-logo {
+  margin: auto;
+  padding: 10px;
+  width: 50%;
+  color: black;
+}
