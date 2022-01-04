@@ -33,12 +33,14 @@
 
 <script>
 
+// function for logout user to remove from local storage and send back to login screen
   async function logoutUser() {
     localStorage.removeItem('username')
     localStorage.removeItem('token')
     location = '/login.html'
   }
 
+  // delete button to remove saved anime from database
      document.addEventListener('click', event => {
 
         if (event.target.className === 'delete') {
@@ -50,7 +52,7 @@
             }
           })
             .then(() => {
-             
+  
               console.log(event.target.parentNode)
               event.target.parentNode.innerHTML = ''
   
@@ -60,7 +62,7 @@
         }
       })
 
-
+// allows profile to be rendered using token, if not sent back to login screen
   async function getProfile() {
     try {
       const { data: user } = await axios.get('/api/users/profile', {
@@ -75,6 +77,7 @@
     }
   }
 
+  // renders post onto page
   async function renderPost({id, title, image, rating, synopsis }) {
     const animeElem = document.createElement('div')
     animeElem.innerHTML = ''
@@ -96,24 +99,16 @@
    
   }
 
+  // function to retrieve username from local storage. Used to Show name for profile
   async function renderUsername() {
     const username = localStorage.getItem('username')
 
     document.getElementById('username').textContent = username
   }
 
-  // document.getElementById('logout').addEventListener('click', logoutUser)
+  document.getElementById('logout').addEventListener('click', logoutUser)
 
-
-
-
-
-
-
-
-
-
-
+  // calls functions
   renderPosts()
   renderUsername()
 
