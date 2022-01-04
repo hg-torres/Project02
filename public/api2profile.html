@@ -47,16 +47,16 @@
   }
 
   async function renderPost({ title, image, rating, synopsis }) {
-    const postElem = document.createElement('div')
+    const animeElem = document.createElement('div')
     
-    postElem.innerHTML = `
+    animeElem.innerHTML = `
               <div class="row bg-light p-5 rounded-md mb-2 mt-2">
                <h2>${title}</h2><img src='${image}' alt='${title}' style="width:75%;">
               <h4>Rating: ${rating}</h4>
               <p>Synopsis: ${synopsis}</p>
               </div>
             `
-    document.getElementById('posts').prepend(postElem)
+    document.getElementById('posts').prepend(animeElem)
   }
 
   async function renderPosts() {
