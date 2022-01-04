@@ -17,7 +17,7 @@
   
 <h1>Profile</h1>
 <p class="lead">Here are <span id="username">johndoe</span>'s anime!</p>
-
+<a href="index.html">Home</a>
 
 </div>
 <div id="posts" class="row"></div>
@@ -39,6 +39,27 @@
     location = '/login.html'
   }
 
+     document.addEventListener('click', event => {
+
+        if (event.target.className === 'delete') {
+          const index = parseInt(event.target.dataset.index)
+          console.log(index)
+          axios.delete(`./api/animes/${index}`, {
+            headers: {
+              'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+          })
+            .then(() => {
+              renderPosts()
+              
+              location.reload()
+              console.log('Anime Deleted')
+            })
+            .catch(err => console.log(err))
+        }
+      })
+
+
   async function getProfile() {
     try {
       const { data: user } = await axios.get('/api/users/profile', {
@@ -53,20 +74,22 @@
     }
   }
 
-  async function renderPost({ title, image, rating, synopsis }) {
+  async function renderPost({id, title, image, rating, synopsis }) {
     const animeElem = document.createElement('div')
-    
+    animeElem.innerHTML = ''
     animeElem.innerHTML = `
               <div class="row bg-light p-5 rounded-md mb-2 mt-2">
                <h2>${title}</h2><img src='${image}' alt='${title}' style="width:75%;">
               <h4>Rating: ${rating}</h4>
               <p>Synopsis: ${synopsis}</p>
+              <button class ="delete" data-index =${id}> Delete </button>
               </div>
             `
     document.getElementById('posts').prepend(animeElem)
   }
 
   async function renderPosts() {
+    
     const { animes } = await getProfile()
     
     animes.forEach(anime => renderPost(anime))
@@ -84,7 +107,7 @@
   renderPosts()
   renderUsername()
 
-
+  
 
 </script>
 
