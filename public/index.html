@@ -68,9 +68,6 @@
 
 
 
-
-
-
   <h1 class="center-align">Anime Search</h1>
   <div class="container">
     <div class="row">
@@ -107,8 +104,7 @@
   <!-- Materialize -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-
-
+  <!-- CDN for axios get -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script>
 
@@ -267,22 +263,22 @@
 
 
     
-    
+    // function for logout user to remove from local storage and send back to login screen
     async function logoutUser() {
       localStorage.removeItem('username')
       localStorage.removeItem('token')
       location = '/login.html'
     }
-    
     document.getElementById('logout').addEventListener('click', logoutUser)
     
+    
+    // function to retrieve username from local storage. Used to Show name for profile
     async function renderUsername() {
        const username = localStorage.getItem('username')
  
        document.getElementById('username').textContent = username
      }  
-
- renderUsername()
+    renderUsername()
 
   </script>
 
