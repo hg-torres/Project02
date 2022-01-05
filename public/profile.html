@@ -9,14 +9,57 @@
   <link href="metro-icons.css" rel="stylesheet">
 </head>
 <style>
+
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: consolas;
+  }
+
   body {
-    background-image: url('./assets/full-metal.png');
+    background-image: url('./assets/full-metal2.png');
     background-color: black;
     color: white;
     background-repeat: no-repeat;
-    background-position: right;
-    background-size: 40%;
+    background-position:
+      top 40px  
+      left 700px;
+    background-size: 80%;
   }
+
+  img {
+    width: 200px;
+    height: auto;
+    border: 1px solid black;
+    float: left;
+    padding: 0px;
+    margin-right: 10px;
+    display: block;
+  }
+
+  .yellow {
+      border: 1px solid rgb(41, 228, 135);
+    }
+
+  .oneAnime {
+      /* border: 1px solid black; */
+      /* background-color: rgb(51, 48, 48);   */
+      text-align: left;
+      width: 100%;
+      height: 100%;
+      margin: 5px;
+      padding: 5px;
+      object-fit: cover;
+    }
+
+
+  .borderBottom {
+      border-bottom: 1px dotted rgb(41, 228, 135);
+      padding-bottom: 20px;
+      padding-top: 20px;
+    }
+
 </style>
 <body>
 
@@ -68,7 +111,7 @@
 
 <script>
 
-// function for logout user to remove from local storage and send back to login screen
+  // function for logout user to remove from local storage and send back to login screen
   async function logoutUser() {
     localStorage.removeItem('username')
     localStorage.removeItem('token')
@@ -76,28 +119,28 @@
   }
 
   // delete button to remove saved anime from database
-     document.addEventListener('click', event => {
+  document.addEventListener('click', event => {
 
-        if (event.target.className === 'delete') {
-          const index = parseInt(event.target.dataset.index)
-          console.log(index)
-          axios.delete(`./api/animes/${index}`, {
-            headers: {
-              'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-          })
-            .then(() => {
-  
-              console.log(event.target.parentNode)
-              event.target.parentNode.innerHTML = ''
-  
-              console.log('Anime Deleted')
-            })
-            .catch(err => console.log(err))
+    if (event.target.className === 'delete') {
+      const index = parseInt(event.target.dataset.index)
+      console.log(index)
+      axios.delete(`./api/animes/${index}`, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       })
+        .then(() => {
 
-// allows profile to be rendered using token, if not sent back to login screen
+          console.log(event.target.parentNode)
+          event.target.parentNode.innerHTML = ''
+
+          console.log('Anime Deleted')
+        })
+        .catch(err => console.log(err))
+    }
+  })
+
+  // allows profile to be rendered using token, if not sent back to login screen
   async function getProfile() {
     try {
       const { data: user } = await axios.get('/api/users/profile', {
@@ -113,7 +156,7 @@
   }
 
   // renders post onto page
-  async function renderPost({id, title, image, rating, synopsis }) {
+  async function renderPost({ id, title, image, rating, synopsis }) {
     const animeElem = document.createElement('div')
     animeElem.innerHTML = ''
     animeElem.innerHTML = `
@@ -124,14 +167,14 @@
       <button class ="delete" data-index =${id}> Delete </button>
       </div>
       `
-      document.getElementById('posts').prepend(animeElem)
+    document.getElementById('posts').prepend(animeElem)
   }
 
   async function renderPosts() {
-    
+
     const { animes } = await getProfile()
     animes.forEach(anime => renderPost(anime))
-   
+
   }
 
   // function to retrieve username from local storage. Used to Show name for profile

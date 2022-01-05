@@ -72,9 +72,6 @@ header {
       object-fit: cover;
     }
 
-    .saveBtn {
-      float: right;
-    }
 
     .borderBottom {
       border-bottom: 1px dotted rgb(41, 228, 135);
@@ -261,44 +258,44 @@ header {
     // Materialize to use JS ex: Nav Bar and drop down menus 
     // M.AutoInit()
 
-    // click event for searching anime
-    document.getElementById(`search`).addEventListener(`click`, event => {
-      event.preventDefault()
-      const searchInfo = document.getElementById(`searchInfo`).value
+      // click event for searching anime
+      document.getElementById(`search`).addEventListener(`click`, event => {
+        event.preventDefault()
+        const searchInfo = document.getElementById(`searchInfo`).value
 
-      // removes previous search from innerHTML 
-      document.getElementById('results').innerHTML = ''
-      document.getElementById('more').innerHTML = ''
+        // removes previous search from innerHTML 
+        document.getElementById('results').innerHTML = ''
+        document.getElementById('more').innerHTML = ''
 
-      // adds more results button after first search (currently only using 10 results)
-      let moreResults = document.createElement('button');
-      moreResults.classList = "center-align col s12 m6 l6 offset-m3 offset-l3";
-      moreResults.innerHTML = "More Results";
+        // adds more results button after first search (currently only using 10 results)
+        let moreResults = document.createElement('button');
+        moreResults.classList = "center-align col s12 m6 l6 offset-m3 offset-l3";
+        moreResults.innerHTML = "More Results";
 
-      document.getElementById('more').append(moreResults)
-
-
-      // get request for anime
-      axios.get(`https://kitsu.io/api/edge/anime?filter[text]=${searchInfo}`)
-        .then(res => {
-          console.log(res.data.data)
-          const search = res.data.data
-          for (let searchIndex = 0; searchIndex < 5; searchIndex++) {
-            let searchResults = search[searchIndex];
-            let searchId = searchResults.id;
-            let searchURL = searchResults.attributes.posterImage.medium;
-            let searchTitle = searchResults.attributes.canonicalTitle;
-            let searchSynopsis = searchResults.attributes.synopsis;
-            let searchScore = searchResults.attributes.averageRating;
-            let searchElem = document.createElement('div');
-            searchElem.classList = " ";
-
-            // what is going to be appended on the page from API information//
-            // <button class="mif-add data-index="${searchId}"></button>
+        document.getElementById('more').append(moreResults)
 
 
-            searchElem.innerHTML =
-              `
+        // get request for anime
+        axios.get(`https://kitsu.io/api/edge/anime?filter[text]=${searchInfo}`)
+          .then(res => {
+            console.log(res.data.data)
+            const search = res.data.data
+            for (let searchIndex = 0; searchIndex < 5; searchIndex++) {
+              let searchResults = search[searchIndex];
+              let searchId = searchResults.id;
+              let searchURL = searchResults.attributes.posterImage.medium;
+              let searchTitle = searchResults.attributes.canonicalTitle;
+              let searchSynopsis = searchResults.attributes.synopsis;
+              let searchScore = searchResults.attributes.averageRating;
+              let searchElem = document.createElement('div');
+              searchElem.classList = " ";
+
+              // what is going to be appended on the page from API information//
+              // <button class="mif-add data-index="${searchId}"></button>
+
+
+              searchElem.innerHTML =
+                `
               <div class="oneAnime borderBottom">
               <div class="fade-in">
               <img src='${searchURL}' alt='${searchTitle}'">
@@ -312,75 +309,15 @@ header {
               </div>
               `;
 
-            // click even to save and push to database using ID/data-index
-            document.addEventListener('click', event => {
-
-              const index = parseInt(event.target.dataset.index)
-              if (event.target.className === 'save btn-btn-primary' && index == searchId) {
-                console.log(index)
-                console.log(searchId)
-
-                // console.log(searchResults)
-                const anime = {
-                  title: `${searchTitle}`,
-                  image: `${searchURL}`,
-                  rating: `${searchScore}`,
-                  synopsis: `${searchSynopsis}`
-                }
-                console.log(anime)
-
-
-
-                axios.post('/api/animes', anime, {
-                  headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`
-                  }
-                })
-                  .then(() => console.log(`anime saved`))
-                  .catch(err => location = 'login.html')
-              }
-
-
-
-            });
-
-
-            document.getElementById(`results`).append(searchElem)
-
-          }
-
-
-          // get request for second anime search (same as above)
-          document.getElementById('more').addEventListener('click', event => {
-            document.getElementById('results').innerHTML = ''
-            document.getElementById('more').innerHTML = ''
-
-            for (let searchIndex = 5; searchIndex < 10; searchIndex++) {
-              let searchResults = search[searchIndex];
-              let searchId = searchResults.id
-              let searchURL = searchResults.attributes.posterImage.medium;
-              let searchTitle = searchResults.attributes.canonicalTitle;
-              let searchSynopsis = searchResults.attributes.synopsis;
-              let searchScore = searchResults.attributes.averageRating;
-              let searchElem2 = document.createElement('div');
-              searchElem2.classList = "col";
-
-
-              searchElem2.innerHTML =
-                `
-              <h2>${searchTitle}</h2><img src='${searchURL}' alt='${searchTitle}' style="width:75%;">
-              <h4>Score: ${searchScore}</h4>
-              <p>Synopsis: ${searchSynopsis}</p>
-              <button class ="save btn-btn-primary" data-index="${searchId}">"Add to my List"</button>
-              `;
-
-
+              // click even to save and push to database using ID/data-index
               document.addEventListener('click', event => {
-                console.log(`ping`)
+
                 const index = parseInt(event.target.dataset.index)
                 if (event.target.className === 'save btn-btn-primary' && index == searchId) {
+                  console.log(index)
+                  console.log(searchId)
 
-                  console.log(searchResults)
+                  // console.log(searchResults)
                   const anime = {
                     title: `${searchTitle}`,
                     image: `${searchURL}`,
@@ -388,35 +325,95 @@ header {
                     synopsis: `${searchSynopsis}`
                   }
                   console.log(anime)
-                  // console.log(anime)
+
+
+
                   axios.post('/api/animes', anime, {
                     headers: {
                       'Authorization': `Bearer ${localStorage.getItem('token')}`
                     }
                   })
-
                     .then(() => console.log(`anime saved`))
                     .catch(err => location = 'login.html')
-
                 }
+
+
+
               });
 
-              document.getElementById(`results`).append(searchElem2)
+
+              document.getElementById(`results`).append(searchElem)
 
             }
+
+
+            // get request for second anime search (same as above)
+            document.getElementById('more').addEventListener('click', event => {
+              document.getElementById('results').innerHTML = ''
+              document.getElementById('more').innerHTML = ''
+
+              for (let searchIndex = 5; searchIndex < 10; searchIndex++) {
+                let searchResults = search[searchIndex];
+                let searchId = searchResults.id
+                let searchURL = searchResults.attributes.posterImage.medium;
+                let searchTitle = searchResults.attributes.canonicalTitle;
+                let searchSynopsis = searchResults.attributes.synopsis;
+                let searchScore = searchResults.attributes.averageRating;
+                let searchElem2 = document.createElement('div');
+                searchElem2.classList = "col";
+
+
+                searchElem2.innerHTML =
+                  `
+              <h2>${searchTitle}</h2><img src='${searchURL}' alt='${searchTitle}' style="width:75%;">
+              <h4>Score: ${searchScore}</h4>
+              <p>Synopsis: ${searchSynopsis}</p>
+              <button class ="save btn-btn-primary" data-index="${searchId}">"Add to my List"</button>
+              `;
+
+
+                document.addEventListener('click', event => {
+                  console.log(`ping`)
+                  const index = parseInt(event.target.dataset.index)
+                  if (event.target.className === 'save btn-btn-primary' && index == searchId) {
+
+                    console.log(searchResults)
+                    const anime = {
+                      title: `${searchTitle}`,
+                      image: `${searchURL}`,
+                      rating: `${searchScore}`,
+                      synopsis: `${searchSynopsis}`
+                    }
+                    console.log(anime)
+                    // console.log(anime)
+                    axios.post('/api/animes', anime, {
+                      headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                      }
+                    })
+
+                      .then(() => console.log(`anime saved`))
+                      .catch(err => location = 'login.html')
+
+                  }
+                });
+
+                document.getElementById(`results`).append(searchElem2)
+
+              }
+            })
+
           })
+          .catch(err => console.log(err))
+      })
 
-        })
-        .catch(err => console.log(err))
-    })
+      async function logoutUser() {
+        localStorage.removeItem('username')
+        localStorage.removeItem('token')
+        location = '/login.html'
+      }
 
-    async function logoutUser() {
-      localStorage.removeItem('username')
-      localStorage.removeItem('token')
-      location = '/login.html'
-    }
-
-    document.getElementById('logout').addEventListener('click', logoutUser)
+      document.getElementById('logout').addEventListener('click', logoutUser)
 
   </script>
 
