@@ -4,312 +4,388 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=, initial-scale=1.0">
-  <title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- BOOTSTRAP -->
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+
+  <!-- MATERIALIZE -->
   <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
   <link href="metro-icons.css" rel="stylesheet">
-</head>
+
+  <!-- <link rel="stylesheet" href="index.css"> -->
+
+  <title>Anime</title>
 
 <style>
-  body {
-    background-color: black;
-  }
 
-  p {
-    background-color: black;
-    padding: 10px;
-  }
+body {
+  /* background-image: url('https://images.hdqwalls.com/download/yuji-itadori-anime-boy-5k-ph-5120x2880.jpg'); */
+  background-color: black;
+  color: white;
+  font-family: consolas;
+}
 
-  img {
-    border: 1px solid black;
-  }
-
-  #searchInfo {
-    width: 300px;
-    text-align: center;
-  }
-
-  .container {
-    background-color: black;
-    border: 1px solid black;
-  }
-/* 
-  .text-center {
-    align-text: center;
-  } */
-
-  .navview-content {
-    background-image: url('/assets/Background\ Img.jpg');
-    background-color: gray;
-    color: white;
-    padding: 10px;
-    height: 100%;
-  }
-
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: consolas;
-  }
-
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 10px;
-  }
-
-  .container .box {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 40px 30px;
-    transition: 0.5s;
-  }
-
-  .container .box::before {
-    content: ' ';
-    position: absolute;
-    top: 0;
-    left: 50px;
-    width: 50%;
-    height: 100%;
-    text-decoration: none;
-    background: #fff;
-    border-radius: 8px;
-    transform: skewX(15deg);
-    transition: 0.5s;
-  }
-
-  .container .box::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50;
-    width: 50%;
-    height: 100%;
-    background: #fff;
-    border-radius: 8px;
-    transform: skewX(15deg);
-    transition: 0.5s;
-    filter: blur(30px);
-  }
-
-  .container .box:hover:before,
-  .container .box:hover:after {
-    transform: skewX(0deg);
-    left: 20px;
-    width: calc(100% - 90px);
-
-  }
-
-  .container .box:nth-child(1):before,
-  .container .box:nth-child(1):after {
-    background: linear-gradient(315deg, #ffbc00, #ff0058)
-  }
-
-  .container .box:nth-child(2):before,
-  .container .box:nth-child(2):after {
-    background: linear-gradient(315deg, #03a9f4, #ff0058)
-  }
-
-  .container .box span {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 5;
-    pointer-events: none;
-  }
-
-  .container .box span::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 0;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    opacity: 0;
-    transition: 0.1s;
-    animation: animate 2s ease-in-out infinite;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08)
-  }
-
-  .container .box:hover span::before {
-    top: -50px;
-    left: 50px;
-    width: 100px;
-    height: 100px;
-    opacity: 1;
-  }
-
-  .container .box span::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0;
+header {
     width: 100%;
-    height: 100%;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    opacity: 0;
-    transition: 0.5s;
-    animation: animate 2s ease-in-out infinite;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    animation-delay: -1s;
-  }
-
-  .container .box:hover span:after {
-    bottom: -50px;
-    right: 50px;
-    width: 100px;
-    height: 100px;
-    opacity: 1;
-  }
-
-  @keyframes animate {
-
-    0%,
-    100% {
-      transform: translateY(10px);
-    }
-
-    50% {
-      transform: translate(-10px);
-    }
-  }
-
-  .container .box .content {
+    opacity: 0.5;
     position: relative;
-    left: 0;
-    padding: 20px 40px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    z-index: 1;
-    transform: 0.5s;
-    color: #fff;
-  }
+    top: 100px;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
 
-  .container .box:hover .content {
-    left: -25px;
-    padding: 60px 40px;
-  }
+/* .title {
+  margin-top: 100px;
+} */
 
-  .container .box .content h2 {
-    font-size: 2em;
-    color: #fff;
-    margin-bottom: 10px;
-  }
+.container {
+  /* background-color: rgb(51, 48, 48); */
+  color: white;
+  margin-top: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
 
-  .container .box .content p {
-    font-size: 1.1em;
-    margin-bottom: 10px;
-    line-height: 1.4em;
-  }
+.yellow {
+  border: 1px solid rgb(41, 228, 135);
+}
 
-  .container .box .content a {
-    display: inline-block;
-    font-size: 1.1em;
-    color: #111;
-    background: #fff;
-    padding: 10px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 700;
-    margin-top: 5px;
-  }
+.oneAnime  {
+  /* border: 1px solid black; */
+  /* background-color: rgb(51, 48, 48);   */
+  text-align: left; 
+  width: 100%;
+  height: 100%;
+  margin: 5px;
+  padding: 5px;
+  object-fit: cover;
+}
 
-  .container .box .content a:hover {
-    background: #ffcf4d;
-    border: 1px solid rgba(255, 0, 88, 0.4);
-    box-shadow: 0 1px 15px rgba(1, 1, 1, 0.2);
-  }
+.saveBtn {
+  float: right;
+}
+
+.borderBottom {
+  border-bottom: 1px dotted rgb(41, 228, 135);
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+img {
+  width: 200px;
+  height: auto;
+  border: 1px solid black;
+  float: left;
+  padding: 0px;
+  margin-right: 10px;
+  display: block;
+}
+
+h2 {
+  padding: 0px;
+  margin: 10px;
+}
+h3 {
+  padding: 0px;
+  margin: 0px;
+}
+
+h4 {
+  padding: 0px;
+  margin: 0px;
+}
+
+.searchBar {
+  width: 300px;
+  float: left;
+  padding-right: 10px;
+}
+
+.fade-in {
+  animation: fadeIn ease 5s;
+  -webkit-animation: fadeIn ease 5s;
+  -moz-animation: fadeIn ease 5s;
+  -o-animation: fadeIn ease 5s;
+  -ms-animation: fadeIn ease 5s;
+}
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
 </style>
+</head>
 
-<d>
-  <div data-role="navview">
-    <div data-role="navview">
-      <div class="navview-pane">
-        <button class="pull-button">
-          <span class="default-icon-menu"></span>
-        </button>
+<body>
 
-        <ul class="navview-menu">
-          <li class="item-header">Main pages</li>
 
-          <li>
-            <a href="./api.html">
-              <span class="icon"><span class="mif-search"></span></span>
-              <span class="caption">Search Anime</span>
-            </a>
+  <!-- Dropdown Structure -->
+  <ul class="h-menu bg-black fg-white">
+    <li><a href="./index.html">
+      <span class="mif-home mif-lg fg-teal"></span>
+      Home
+    </a></li>
+    <li class="divider"></li>
+    <li><a href="./creators.html">
+      <span class="mif-users mif-lg fg-pink"></span>
+      Creators
+    </a></li>
+    <li>
+      <a href="#" class="dropdown-toggle bg-black fg-white">
+        <span class="mif-user mif-lg fg-amber"></span>
+        Username<span class="mif-arrow-drop-down fg-amber"></span></a>
+      <ul class="d-menu bg-black fg-white" data-role="dropdown">
+        <li><a href="./profile.html">
+          <span class="mif-profile mif-lg fg-violet"></span>
+          Profile</a></li>
+        <li><a href="./login.html">
+            <span class="mif-user-check mif-lg fg-lime"></span>
+            Sign In</a></li>
+        <li><a href="./register.html">
+              <span class="mif-user-plus mif-lg fg-yellow"></span>
+            Create Account</a></li>
+        <li><a href="./index.html">
+          <span class="mif-cross mif-lg fg-red"></span>
+          Sign Out
+        </a></li>
+      </ul>
+    </li>
+  </ul>
 
-          </li>
-          <li>
-            <a href="./saved.html">
-              <span class="icon"><span class="mif-list"></span></span>
-              <span class="caption">Your Anime List</span>
-            </a>
-          </li>
-          <li>
-            <a href="./creators.html">
-              <span class="icon"><span class="mif-user"></span></span>
-              <span class="caption">Creators</span>
-            </a>
-          </li>
-          <li>
-            <a href="./login.html">
-              <span class="icon"><span class="mif-cross"></span></span>
-              <span class="caption">Sign Out</span>
-            </a>
-          </li>
-        </ul>
+  <!-- <div class="navview-content"> -->
+    <div data-role="carousel" data-height="300px" data-auto-start="true" data-cls-controls="fg-white"
+      data-control-next="<span class='mif-chevron-right'></span>"
+      data-control-prev="<span class='mif-chevron-left'></span>">
 
-      </div>
+        <div class="slide" data-cover="https://pbs.twimg.com/media/EzXe_zSUYAIh45q.jpg"></div>
 
-      <div class="navview-content">
-        <div class="container">
-          <h1>ANIME LIST</h1>
-        </div>
-
-        <div class="container">
-
-          <div class="box">
-            <span></span>
-            <div class="content">
-              <a href="./login.html">Login</a>
+      <div class="slide" data-cover="https://i.pinimg.com/originals/e0/4f/b5/e04fb53e97ff1656bc0ddb9e50b139a6.jpg"></div>
+      <div class="slide" data-cover="https://static.tumblr.com/gpbjshz/mm7nx60jz/3.png"></div>
+    </div>
+    
+    <div class="container yellow">
+      <h2 class="center-align title">Anime Search</h2>
+      <div class="row">
+        <div class="col l12 class center-align">
+          <!-- <a href="/saved">Saved </a> -->
+          <form>
+            <p>
+            <div class="searchBar">
+              <input class="center-align" type="text" name="search" id="searchInfo" placeholder="Search for Anime...">
             </div>
-          </div>
-
-          <div class="box">
-            <span></span>
-            <div class="content">
-              <a href="./register.html">Sign up</a><br>
-            </div>
-          </div>
-
+    
+            </p>
+            <button class="button success outline" id="search">Search</button>
+          </form>
         </div>
-
       </div>
+    
+      <div class="row" id="results"></div>
+      <div class="row" id="more"></div>
+    
     </div>
 
+  <!-- </div>
+</div> -->
+
+
+<!-- <header>hhhhhh</header> -->
+
+
+
+  <!-- Metro4 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link href="metro-icons.css" rel="stylesheet">
+  <script>
+
+    // Materialize to use JS ex: Nav Bar and drop down menus 
+    // M.AutoInit()
+
+    // click event for searching anime
+    document.getElementById(`search`).addEventListener(`click`, event => {
+      event.preventDefault()
+      const searchInfo = document.getElementById(`searchInfo`).value
+
+      // removes previous search from innerHTML 
+      document.getElementById('results').innerHTML = ''
+      document.getElementById('more').innerHTML = ''
+
+      // adds more results button after first search (currently only using 10 results)
+      let moreResults = document.createElement('button');
+      moreResults.classList = "center-align col s12 m6 l6 offset-m3 offset-l3";
+      moreResults.innerHTML = "More Results";
+
+      document.getElementById('more').append(moreResults)
+
+
+      // get request for anime
+      axios.get(`https://kitsu.io/api/edge/anime?filter[text]=${searchInfo}`)
+        .then(res => {
+          console.log(res.data.data)
+          const search = res.data.data
+          for (let searchIndex = 0; searchIndex < 5; searchIndex++) {
+            let searchResults = search[searchIndex];
+            let searchId = searchResults.id;
+            let searchURL = searchResults.attributes.posterImage.medium;
+            let searchTitle = searchResults.attributes.canonicalTitle;
+            let searchSynopsis = searchResults.attributes.synopsis;
+            let searchScore = searchResults.attributes.averageRating;
+            let searchElem = document.createElement('div');
+            searchElem.classList = " ";
+
+            // what is going to be appended on the page from API information//
+              // <button class="mif-add data-index="${searchId}"></button>
+
+              
+            searchElem.innerHTML =
+              `
+              <div class="oneAnime borderBottom">
+              <div class="fade-in">
+              <img src='${searchURL}' alt='${searchTitle}'">
+              </div>
+              <button class"button link saveBtn">
+                <i class="mif-add fg-green mif-5x" data-index="${searchId}"></i>
+              </button>
+              <h3>${searchTitle}</h3>
+              <h4>Rating: ${searchScore}</h4>
+              <p><strong>Synopsis</strong>: ${searchSynopsis}</p>
+              </div>
+              `;
+
+            // click even to save and push to database using ID/data-index
+            document.addEventListener('click', event => {
+
+              const index = parseInt(event.target.dataset.index)
+              if (event.target.className === 'save btn-btn-primary' && index == searchId) {
+                console.log(index)
+                console.log(searchId)
+
+                // console.log(searchResults)
+                const anime = {
+                  title: `${searchTitle}`,
+                  image: `${searchURL}`,
+                  rating: `${searchScore}`,
+                  synopsis: `${searchSynopsis}`
+                }
+                console.log(anime)
+
+
+
+                axios.post('/api/animes', anime, {
+                  headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                  }
+                })
+                  .then(() => console.log(`anime saved`))
+                  .catch(err => location = 'login.html')
+              }
+
+
+
+            });
+
+
+            document.getElementById(`results`).append(searchElem)
+
+          }
+
+
+          // get request for second anime search (same as above)
+          document.getElementById('more').addEventListener('click', event => {
+            document.getElementById('results').innerHTML = ''
+            document.getElementById('more').innerHTML = ''
+
+            for (let searchIndex = 5; searchIndex < 10; searchIndex++) {
+              let searchResults = search[searchIndex];
+              let searchId = searchResults.id
+              let searchURL = searchResults.attributes.posterImage.medium;
+              let searchTitle = searchResults.attributes.canonicalTitle;
+              let searchSynopsis = searchResults.attributes.synopsis;
+              let searchScore = searchResults.attributes.averageRating;
+              let searchElem2 = document.createElement('div');
+              searchElem2.classList = "col";
+
+
+              searchElem2.innerHTML =
+                `
+              <h2>${searchTitle}</h2><img src='${searchURL}' alt='${searchTitle}' style="width:75%;">
+              <h4>Score: ${searchScore}</h4>
+              <p>Synopsis: ${searchSynopsis}</p>
+              <button class ="save btn-btn-primary" data-index="${searchId}">"Add to my List"</button>
+              `;
+
+
+              document.addEventListener('click', event => {
+                console.log(`ping`)
+                const index = parseInt(event.target.dataset.index)
+                if (event.target.className === 'save btn-btn-primary' && index == searchId) {
+
+                  console.log(searchResults)
+                  const anime = {
+                    title: `${searchTitle}`,
+                    image: `${searchURL}`,
+                    rating: `${searchScore}`,
+                    synopsis: `${searchSynopsis}`
+                  }
+                  console.log(anime)
+                  // console.log(anime)
+                  axios.post('/api/animes', anime, {
+                    headers: {
+                      'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    }
+                  })
+
+                    .then(() => console.log(`anime saved`))
+                    .catch(err => location = 'login.html')
+
+                }
+              });
+
+              document.getElementById(`results`).append(searchElem2)
+
+            }
+          })
+
+        })
+        .catch(err => console.log(err))
+    })
+
+    async function logoutUser() {
+      localStorage.removeItem('username')
+      localStorage.removeItem('token')
+      location = '/login.html'
+    }
+
+    document.getElementById('logout').addEventListener('click', logoutUser)
+
+  </script>
 
     <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-    </body>
+</body>
 
 </html>
