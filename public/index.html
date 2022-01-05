@@ -11,68 +11,242 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
 
   <!-- MATERIALIZE -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+
+  <!-- METRO4 -->
+  <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
+  <link href="metro-icons.css" rel="stylesheet">
+
 
   <link rel="stylesheet" href="index.css">
 
   <title>Anime</title>
+  <style>
+    body {
+      /* background-image: url('https://images.hdqwalls.com/download/yuji-itadori-anime-boy-5k-ph-5120x2880.jpg'); */
+      background-color: black;
+      color: white;
+      font-family: consolas;
+    }
+  
+    header {
+      width: 100%;
+      opacity: 0.5;
+      position: relative;
+      top: 100px;
+      background-color: black;
+      color: white;
+      text-align: center;
+    }
+  
+    /* .title {
+    margin-top: 100px;
+  } */
+  
+    .container {
+      /* background-color: rgb(51, 48, 48); */
+      color: white;
+      margin-top: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+  
+    .yellow {
+      border: 1px solid rgb(41, 228, 135);
+    }
+  
+    .oneAnime {
+      /* border: 1px solid black; */
+      /* background-color: rgb(51, 48, 48);   */
+      text-align: left;
+      width: 100%;
+      height: 100%;
+      margin: 5px;
+      padding: 5px;
+      object-fit: cover;
+    }
+  
+    .saveBtn {
+      font-size: 50px;
+      float: right;
+    }
+  
+    .borderBottom {
+      border-bottom: 1px dotted rgb(41, 228, 135);
+      padding-bottom: 20px;
+      padding-top: 20px;
+    }
+  
+    img {
+      width: 200px;
+      height: auto;
+      border: 1px solid black;
+      float: left;
+      padding: 0px;
+      margin-right: 10px;
+      display: block;
+    }
+  
+    h2 {
+      padding: 0px;
+      margin: 10px;
+    }
+  
+    h3 {
+      padding: 0px;
+      margin: 0px;
+    }
+  
+    h4 {
+      padding: 0px;
+      margin: 0px;
+    }
+  
+    .searchBar {
+      width: 300px;
+      float: left;
+      padding-right: 10px;
+    }
+  
+    .fade-in {
+      animation: fadeIn ease 5s;
+      -webkit-animation: fadeIn ease 5s;
+      -moz-animation: fadeIn ease 5s;
+      -o-animation: fadeIn ease 5s;
+      -ms-animation: fadeIn ease 5s;
+    }
+
+  
+  
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+  
+      100% {
+        opacity: 1;
+      }
+    }
+  
+    @-moz-keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+  
+      100% {
+        opacity: 1;
+      }
+    }
+  
+    @-webkit-keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+  
+      100% {
+        opacity: 1;
+      }
+    }
+  
+    @-o-keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+  
+      100% {
+        opacity: 1;
+      }
+    }
+  
+    @-ms-keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+  
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
+<!-- nav bar -->
+<ul class="h-menu bg-black fg-white">
+  <li><a href="./index.html">
+      <span class="mif-home mif-lg fg-teal"></span>
+      Home
+    </a></li>
+  <li class="divider"></li>
+  <li><a href="./creators.html">
+      <span class="mif-users mif-lg fg-pink"></span>
+      Creators
+    </a></li>
+  <li>
+    <a href="#" class="dropdown-toggle bg-black fg-white">
+      <span class="mif-user mif-lg fg-amber"></span>
+      Username<span class="mif-arrow-drop-down fg-amber"></span></a>
+    <ul class="d-menu bg-black fg-white" data-role="dropdown">
+      <li><a href="./profile.html">
+          <span class="mif-profile mif-lg fg-violet"></span>
+          Profile</a></li>
+      <li><a href="./login.html">
+          <span class="mif-user-check mif-lg fg-lime"></span>
+          Sign In</a></li>
+      <li><a href="./register.html">
+          <span class="mif-user-plus mif-lg fg-yellow"></span>
+          Create Account</a></li>
+      <li><a href="./index.html">
+          <span id="logout" class="mif-cross mif-lg fg-red"></span>
+          Sign Out
+        </a></li>
+    </ul>
+  </li>
+</ul>
 
-  <!-- Dropdown Structure -->
-  <ul id="dropdown1" class="dropdown-content">
-    <li><a id="profile" href="profile.html">Profile</a></li>
-    <li class="divider"></li>
-    <li><a id="logout" href="login.html">Log Out</a></li>
-  </ul>
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">gitanime</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <!-- Dropdown Trigger -->
-        <li><a id="username" class="dropdown-trigger" href="#!" data-target="dropdown1">Name Goes Here<i
-              class="material-icons right">arrow_drop_down</i></a></li>
-      </ul>
+
+  <!-- <div class="navview-content"> -->
+  <div data-role="carousel" data-height="300px" data-auto-start="true" data-cls-controls="fg-white"
+    data-control-next="<span class='mif-chevron-right'></span>"
+    data-control-prev="<span class='mif-chevron-left'></span>">
+  
+    <div class="slide" data-cover="https://pbs.twimg.com/media/EzXe_zSUYAIh45q.jpg"></div>
+  
+    <div class="slide" data-cover="https://i.pinimg.com/originals/e0/4f/b5/e04fb53e97ff1656bc0ddb9e50b139a6.jpg"></div>
+    <div class="slide" data-cover="https://static.tumblr.com/gpbjshz/mm7nx60jz/3.png"></div>
+  </div>
+  
+  <div class="container yellow">
+    <h2 class="center-align title">Anime Search</h2>
+    <div class="row">
+      <div class="col l12 class center-align">
+        <!-- <a href="/saved">Saved </a> -->
+        <form>
+          <p>
+          <div class="searchBar">
+            <input class="center-align" type="text" name="search" id="searchInfo" placeholder="Search for Anime...">
+          </div>
+  
+          </p>
+          <button class="button success outline" id="search">Search</button>
+        </form>
+      </div>
     </div>
-  </nav>
-
-
-  <div class="carousel carousel-slider" data-indicators="true">
-    <div class="carousel-fixed-item center">
-      <a class="btn waves-effect white grey-text darken-text-2">button</a>
-    </div>
-    <a class="carousel-item img1" href="#one!"><img src="./assets/animeWallpaper.jpg"></a>
-    <a class="carousel-item img2" href="#two!"><img src="./assets/BackgroundImg.jpg"></a>
-
+  
+    <div class="row" id="results"></div>
+    <div class="row" id="more"></div>
+  
   </div>
 
-  <!-- <div class="carousel carousel-slider center" data-indicators="true">
-    <div class="carousel-fixed-item center">
-    </div>
-
-    <div class="carousel-item img1 white-text" href="#one!" >
-      <h1>Anime</h1>
-      <p class="white-text">This is your first panel</p>
-    </div>
-    <div class="carousel-item img2 white-text" href="#two!">
-      <h1>Anime</h1>
-      <p class="white-text">This is your second panel</p>
-    </div>
-    
-  </div> -->
 
 
-
-  <h1 class="center-align">Anime Search</h1>
+  <!-- <h1 class="center-align">Anime Search</h1>
   <div class="container">
     <div class="row">
       <div class="col l12 class center-align" >
-    <!-- <a href="/saved">Saved </a> -->
+    <a href="/saved">Saved </a>
     <form >
       <p>
         <label for="searchInfo">Search for your anime here!</label>
@@ -94,22 +268,18 @@
   </div>
   <div class="container">
     <div class= "row" id="more"></div>
-  </div>
+  </div> -->
 
-  <!-- BOOTSTRAP -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script> -->
 
-  <!-- Materialize -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+  <!-- METRO4 -->
+  <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
 
   <!-- CDN for axios get -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script>
 
-// Materialize to use JS ex: Nav Bar and drop down menus 
-   M.AutoInit()
 
 
 
@@ -147,14 +317,30 @@
             searchElem.classList = "col s12 m6 l6";
 
             // what is going to be appended on the page from API information
-            searchElem.innerHTML =  
-               `
-              <div >
-              <h3>${searchTitle}</h3><img src='${searchURL}' alt='${searchTitle}' style="width:75%;">
+            // searchElem.innerHTML =  
+            //    `
+            //   <div >
+            //   <h3>${searchTitle}</h3><img src='${searchURL}' alt='${searchTitle}' style="width:75%;">
+            //   <h4>Rating: ${searchScore}</h4>
+            //   <p>Synopsis: ${searchSynopsis}</p>
+            //   <button class ="save btn-btn-primary" data-index="${searchId}">"Add to my List"</button>
+            //   <div>
+            //   `;
+
+          
+             searchElem.innerHTML =
+              `
+              <div class="oneAnime borderBottom">
+              <div class="fade-in">
+              <img src='${searchURL}' alt='${searchTitle}'">
+              </div>
+              <button class="button link saveBtn fg-green" data-index="${searchId}">+
+          
+              </button>
+              <h3>${searchTitle}</h3>
               <h4>Rating: ${searchScore}</h4>
-              <p>Synopsis: ${searchSynopsis}</p>
-              <button class ="save btn-btn-primary" data-index="${searchId}">"Add to my List"</button>
-              <div>
+              <p><strong>Synopsis</strong>: ${searchSynopsis}</p>
+              </div>
               `;
 
 
@@ -166,7 +352,7 @@
             document.addEventListener('click', event => {
               
               const index = parseInt(event.target.dataset.index)
-              if (event.target.className === 'save btn-btn-primary' && index == searchId) {
+              if (event.target.className === 'button link saveBtn fg-green' && index == searchId) {
                 console.log(index)
                 console.log(searchId)
                 
