@@ -5,19 +5,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- BOOTSTRAP -->
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
-
-  <!-- MATERIALIZE -->
+  
+  <link href="reset.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
   <link href="metro-icons.css" rel="stylesheet">
-
-  <!-- <link rel="stylesheet" href="index.css"> -->
+  <link rel="stylesheet" href="index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
 
   <title>Anime</title>
-
   <style>
     body {
       /* background-image: url('https://images.hdqwalls.com/download/yuji-itadori-anime-boy-5k-ph-5120x2880.jpg'); */
@@ -25,7 +20,7 @@
       color: white;
       font-family: consolas;
     }
-
+  
     header {
       width: 100%;
       opacity: 0.5;
@@ -35,11 +30,11 @@
       color: white;
       text-align: center;
     }
-
+  
     /* .title {
-  margin-top: 100px;
-} */
-
+    margin-top: 100px;
+  } */
+  
     .container {
       /* background-color: rgb(51, 48, 48); */
       color: white;
@@ -47,11 +42,11 @@
       padding: 20px;
       margin-bottom: 20px;
     }
-
+  
     .yellow {
-      border: 1px solid rgb(41, 228, 135);
+      border: 1px solid #60a917;
     }
-
+  
     .oneAnime {
       /* border: 1px solid black; */
       /* background-color: rgb(51, 48, 48);   */
@@ -62,17 +57,22 @@
       padding: 5px;
       object-fit: cover;
     }
-
+  
     .saveBtn {
+      font-size: 50px;
       float: right;
     }
-
+    .saveBtn2 {
+      font-size: 50px;
+      align-items: center;
+    }
+  
     .borderBottom {
       border-bottom: 1px dotted rgb(41, 228, 135);
       padding-bottom: 20px;
       padding-top: 20px;
     }
-
+  
     img {
       width: 200px;
       height: auto;
@@ -82,28 +82,28 @@
       margin-right: 10px;
       display: block;
     }
-
+  
     h2 {
       padding: 0px;
       margin: 10px;
     }
-
+  
     h3 {
       padding: 0px;
       margin: 0px;
     }
-
+  
     h4 {
       padding: 0px;
       margin: 0px;
     }
-
+  
     .searchBar {
       width: 300px;
       float: left;
       padding-right: 10px;
     }
-
+  
     .fade-in {
       animation: fadeIn ease 5s;
       -webkit-animation: fadeIn ease 5s;
@@ -112,51 +112,80 @@
       -ms-animation: fadeIn ease 5s;
     }
 
+
+.coverImg {
+  height: 100%;
+  width: auto;
+}
+
+.animeTitle {
+  
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.thumbnail { 
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.img-container img {
+  height: 20rem;
+  width: auto;
+}
+.img-container.thumbnail {
+  border: 1px solid #60a917;
+}
+
+  
+  
     @keyframes fadeIn {
       0% {
         opacity: 0;
       }
-
+  
       100% {
         opacity: 1;
       }
     }
-
+  
     @-moz-keyframes fadeIn {
       0% {
         opacity: 0;
       }
-
+  
       100% {
         opacity: 1;
       }
     }
-
+  
     @-webkit-keyframes fadeIn {
       0% {
         opacity: 0;
       }
-
+  
       100% {
         opacity: 1;
       }
     }
-
+  
     @-o-keyframes fadeIn {
       0% {
         opacity: 0;
       }
-
+  
       100% {
         opacity: 1;
       }
     }
-
+  
     @-ms-keyframes fadeIn {
       0% {
         opacity: 0;
       }
-
+  
       100% {
         opacity: 1;
       }
@@ -166,51 +195,50 @@
 
 <body>
 
+<!-- nav bar -->
+<ul class="h-menu bg-black fg-white">
+  <li><a href="./index.html">
+      <span class="mif-home mif-lg fg-teal "></span>
+      Home
+    </a></li>
+  <li class="divider"></li>
+  <li><a href="./creators.html">
+      <span class="mif-users mif-lg fg-pink"></span>
+      Creators
+    </a></li>
+  <li>
+    <a href="#" class="dropdown-toggle bg-black fg-white">
+      <span id="username" class="mif-user mif-lg fg-amber"></span>
+      <span class="mif-arrow-drop-down fg-amber"></span></a>
+    <ul class="d-menu bg-black fg-white" data-role="dropdown">
+      <li><a href="./profile.html">
+          <span class="mif-profile mif-lg fg-violet"></span>
+          Profile</a></li>
+      <li><a href="./login.html">
+          <span class="mif-user-check mif-lg fg-lime"></span>
+          Sign In</a></li>
+      <li><a href="./register.html">
+          <span class="mif-user-plus mif-lg fg-yellow"></span>
+          Create Account</a></li>
+      <li>
+          <a id="logout" class="mif-cross mif-lg fg-red" href="#">Log Out</a>
+        </a></li>
+    </ul>
+  </li>
+</ul>
 
-  <!-- Dropdown Structure -->
-  <ul class="h-menu bg-black fg-white">
-    <li><a href="./index.html">
-        <span class="mif-home mif-lg fg-teal"></span>
-        Home
-      </a></li>
-    <li class="divider"></li>
-    <li><a href="./creators.html">
-        <span class="mif-users mif-lg fg-pink"></span>
-        Creators
-      </a></li>
-    <li>
-      <a href="#" class="dropdown-toggle bg-black fg-white">
-        <span class="mif-user mif-lg fg-amber"></span>
-        Username<span class="mif-arrow-drop-down fg-amber"></span></a>
-      <ul class="d-menu bg-black fg-white" data-role="dropdown">
-        <li><a href="./profile.html">
-            <span class="mif-profile mif-lg fg-violet"></span>
-            Profile</a></li>
-        <li><a href="./login.html">
-            <span class="mif-user-check mif-lg fg-lime"></span>
-            Sign In</a></li>
-        <li><a href="./register.html">
-            <span class="mif-user-plus mif-lg fg-yellow"></span>
-            Create Account</a></li>
-        <li><a href="./index.html">
-            <span class="mif-cross mif-lg fg-red"></span>
-            Sign Out
-          </a></li>
-      </ul>
-    </li>
-  </ul>
 
   <!-- <div class="navview-content"> -->
   <div data-role="carousel" data-height="300px" data-auto-start="true" data-cls-controls="fg-white"
     data-control-next="<span class='mif-chevron-right'></span>"
     data-control-prev="<span class='mif-chevron-left'></span>">
-
+  
     <div class="slide" data-cover="https://pbs.twimg.com/media/EzXe_zSUYAIh45q.jpg"></div>
-
+  
     <div class="slide" data-cover="https://i.pinimg.com/originals/e0/4f/b5/e04fb53e97ff1656bc0ddb9e50b139a6.jpg"></div>
     <div class="slide" data-cover="https://static.tumblr.com/gpbjshz/mm7nx60jz/3.png"></div>
   </div>
-
+  
   <div class="container yellow">
     <h2 class="center-align title">Anime Search</h2>
     <div class="row">
@@ -221,74 +249,218 @@
           <div class="searchBar">
             <input class="center-align" type="text" name="search" id="searchInfo" placeholder="Search for Anime...">
           </div>
-
+  
           </p>
           <button class="button success outline" id="search">Search</button>
         </form>
       </div>
     </div>
-
+  
     <div class="row" id="results"></div>
     <div class="row" id="more"></div>
-
+  
   </div>
 
-  <!-- </div>
-</div> -->
+  <!-- TRENDING/POPULAR/ETC -->
+  <div class="container yellow">
+    <div class="row">
+
+      <main>
+        <section>
+          <div class="container grid">
+            <h2 class="mt-4">Trending</h2>
+            <hr>
+            <div class="row" id="TRENDING_DESC">
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="container grid">
+            <h2 class="mt-4">Popular</h2>
+            <hr>
+            <div class="row" id="POPULARITY_DESC">
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="container grid">
+            <h2 class="mt-4">Highest Rated</h2>
+            <hr>
+            <div class="row" id="SCORE_DESC">
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="container grid">
+            <h2 class="mt-4">Most Favorited</h2>
+            <hr>
+            <div class="row" id="FAVOURITES_DESC">
+            </div>
+          </div>
+        </section>
+      </main>
+      
+    </div>
+    </div>
+    
+
+  <!-- <h1 class="center-align">Anime Search</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col l12 class center-align" >
+    <a href="/saved">Saved </a>
+    <form >
+      <p>
+        <label for="searchInfo">Search for your anime here!</label>
+        <input class="center-align" type="text" name="search" id="searchInfo">
+      </p>
+      <button id="search">Search</button>
+    </form>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+
+    <div class="row" id="results"></div>
+    <br>
+    
+    
+    
+    
+  </div>
+  <div class="container">
+    <div class= "row" id="more"></div>
+  </div> -->
 
 
-  <!-- <header>hhhhhh</header> -->
 
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- METRO4 -->
   <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
-  <script src="index.js"></script>
-</body>
 
-</html>
-
-<!-- <script>
-      document.getElementById(`search`).addEventListener(`click`, event => {
-          event.preventDefault()
-          const searchInfo = document.getElementById(`searchInfo`).value
-
-          // removes previous search from innerHTML 
-          document.getElementById('results').innerHTML = ''
-          document.getElementById('more').innerHTML = ''
-
-          // adds more results button after first search (currently only using 10 results)
-          let moreResults = document.createElement('button');
-          moreResults.classList = "center-align col s12 m6 l6 offset-m3 offset-l3";
-          moreResults.innerHTML = "More Results";
-
-          document.getElementById('more').append(moreResults)
-
-        axios.get(`https://kitsu.io/api/edge/anime?filter[text]=${searchInfo}`)
-            .then(res => {
-              
-              console.log(res.data.data)
-              const search = res.data.data
-              for (let searchIndex = 0; searchIndex < 5; searchIndex++) {
-                let searchResults = search[searchIndex];
-                let searchId = searchResults.id;
-                let searchURL = searchResults.attributes.posterImage.medium;
-                let searchTitle = searchResults.attributes.canonicalTitle;
-                let searchSynopsis = searchResults.attributes.synopsis;
-                let searchScore = searchResults.attributes.averageRating;
-                let searchElem = document.createElement('div');
-                searchElem.classList = " ";
-
-                // what is going to be appended on the page from API information//
-                // <button class="mif-add data-index="${searchId}"></button>
+  <!-- CDN for axios get -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
 
 
-                searchElem.innerHTML =
-                  `
+// Anime Search function
+
+  searchInfo = "Made in Abyss"
+
+  function searchFnc(searchInfo) {
+    // Here we define our query as a multi-line string
+    // Storing it in a separate .graphql/.gql file is also possible
+    const query = `
+                    query ($id: Int, $page: Int, $perPage: Int, $search: String) {
+            Page(page: $page, perPage: $perPage) {
+              pageInfo {
+                total
+                currentPage
+                lastPage
+                hasNextPage
+                perPage
+              }
+              media(id: $id, search: $search, sort: POPULARITY_DESC) {
+                id
+                idMal
+                title {
+                  romaji
+                  english
+                  native
+                }
+                type
+                endDate {
+                  year
+                  month
+                  day
+                }
+                startDate {
+                  year
+                  month
+                  day
+                }
+                studios(isMain: true) {
+                  nodes {
+                    name
+                  }
+                }
+                isAdult
+                source
+                genres
+                volumes
+                episodes
+                chapters
+                siteUrl
+                status
+                averageScore
+                meanScore
+                popularity
+                description
+                favourites
+                coverImage {
+                  extraLarge
+                  medium
+                  large
+                  color
+                }
+              }
+            }
+  }`;
+
+    // Define our query variables and values that will be used in the query request
+    var variables = {
+      search: searchInfo,
+      page: 1,
+      perPage: 5
+    };
+
+    // Define the config we'll need for our Api request
+    var url = 'https://graphql.anilist.co',
+      options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          query: query,
+          variables: variables
+        })
+      };
+
+    // Make the HTTP Api request
+    fetch(url, options).then(handleResponse)
+      .then(handleData)
+      .catch(handleError);
+
+    function handleResponse(response) {
+      return response.json().then(function (json) {
+        return response.ok ? json : Promise.reject(json);
+      });
+    }
+
+    function handleData(data) {
+      console.log(data);
+      let animeResult = data.data.Page.media
+      console.log(data.data.Page.media[0].title.english)
+
+      animeResult.forEach(anime => {
+        let searchId = anime.id;
+        let searchURL = anime.coverImage.medium;
+        let searchTitle = anime.title.english;
+        let searchSynopsis = anime.description;
+        let searchScore = anime.meanScore;
+
+        let searchElem = document.createElement('div');
+        searchElem.classList = " ";
+
+        searchElem.innerHTML =
+          `
               <div class="oneAnime borderBottom">
               <div class="fade-in">
               <img src='${searchURL}' alt='${searchTitle}'">
               </div>
-              <button class"button link saveBtn">
-                <i class="mif-add fg-green mif-5x" data-index="${searchId}"></i>
+              <button class="button link saveBtn fg-green" data-index="${searchId}">+
               </button>
               <h3>${searchTitle}</h3>
               <h4>Rating: ${searchScore}</h4>
@@ -296,101 +468,251 @@
               </div>
               `;
 
-                // click even to save and push to database using ID/data-index
-                document.addEventListener('click', event => {
+        // click even to save and push to database using ID/data-index
+        document.addEventListener('click', event => {
 
-                  const index = parseInt(event.target.dataset.index)
-                  if (event.target.className === 'save btn-btn-primary' && index == searchId) {
-                    console.log(index)
-                    console.log(searchId)
+          const index = parseInt(event.target.dataset.index)
+          if (event.target.className === 'button link saveBtn fg-green' && index == searchId) {
+            console.log(index)
+            console.log(searchId)
 
-                    // console.log(searchResults)
-                    const anime = {
-                      title: `${searchTitle}`,
-                      image: `${searchURL}`,
-                      rating: `${searchScore}`,
-                      synopsis: `${searchSynopsis}`
-                    }
-                    console.log(anime)
+            // console.log(searchResults)
+            const anime = {
+              title: `${searchTitle}`,
+              image: `${searchURL}`,
+              rating: `${searchScore}`,
+              synopsis: `${searchSynopsis}`
+            }
+            console.log(anime)
 
-
-
-                    axios.post('/api/animes', anime, {
-                      headers: {
-                        'Authorization': `Bearer ${localStorage.getItem('token')}`
-                      }
-                    })
-                      .then(() => console.log(`anime saved`))
-                      .catch(err => location = 'login.html')
-                  }
-
-
-
-                });
-
-
-                document.getElementById(`results`).append(searchElem)
-
+            axios.post('/api/animes', anime, {
+              headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
               }
-
-
-              // get request for second anime search (same as above)
-              document.getElementById('more').addEventListener('click', event => {
-                document.getElementById('results').innerHTML = ''
-                document.getElementById('more').innerHTML = ''
-
-                for (let searchIndex = 5; searchIndex < 10; searchIndex++) {
-                  let searchResults = search[searchIndex];
-                  let searchId = searchResults.id
-                  let searchURL = searchResults.attributes.posterImage.medium;
-                  let searchTitle = searchResults.attributes.canonicalTitle;
-                  let searchSynopsis = searchResults.attributes.synopsis;
-                  let searchScore = searchResults.attributes.averageRating;
-                  let searchElem2 = document.createElement('div');
-                  searchElem2.classList = "col";
-
-
-                  searchElem2.innerHTML =
-                    `
-              <h2>${searchTitle}</h2><img src='${searchURL}' alt='${searchTitle}' style="width:75%;">
-              <h4>Score: ${searchScore}</h4>
-              <p>Synopsis: ${searchSynopsis}</p>
-              <button class ="save btn-btn-primary" data-index="${searchId}">"Add to my List"</button>
-              `;
-
-
-                  document.addEventListener('click', event => {
-                    console.log(`ping`)
-                    const index = parseInt(event.target.dataset.index)
-                    if (event.target.className === 'save btn-btn-primary' && index == searchId) {
-
-                      console.log(searchResults)
-                      const anime = {
-                        title: `${searchTitle}`,
-                        image: `${searchURL}`,
-                        rating: `${searchScore}`,
-                        synopsis: `${searchSynopsis}`
-                      }
-                      console.log(anime)
-                      // console.log(anime)
-                      axios.post('/api/animes', anime, {
-                        headers: {
-                          'Authorization': `Bearer ${localStorage.getItem('token')}`
-                        }
-                      })
-
-                        .then(() => console.log(`anime saved`))
-                        .catch(err => location = 'login.html')
-
-                    }
-                  });
-
-                  document.getElementById(`results`).append(searchElem2)
-
-                }
-              })
-
             })
-            .catch(err => console.log(err))
-    })
-</script> -->
+              .then(() => console.log(`anime saved`))
+              .catch(err => location = 'login.html')
+          }
+        });
+
+
+        document.getElementById(`results`).append(searchElem)
+      })
+
+
+
+    }
+
+    function handleError(error) {
+      alert('Error, check console');
+      console.error(error);
+    }
+
+
+  }
+  
+
+
+  // click event for searching anime
+  document.getElementById(`search`).addEventListener(`click`, event => {
+    event.preventDefault()
+    const searchInfo = document.getElementById(`searchInfo`).value
+    console.log(searchInfo)
+
+    // removes previous search from innerHTML 
+    document.getElementById('results').innerHTML = ''
+    document.getElementById('more').innerHTML = ''
+
+    // adds more results button after first search (currently only using 10 results)
+    let moreResults = document.createElement('button');
+    moreResults.classList = "center-align col s12 m6 l6 offset-m3 offset-l3";
+    moreResults.innerHTML = "More Results";
+
+    document.getElementById('more').append(moreResults)
+
+    searchFnc(searchInfo)
+
+  })
+
+
+    
+    // function for logout user to remove from local storage and send back to login screen
+    async function logoutUser() {
+      localStorage.removeItem('username')
+      localStorage.removeItem('token')
+      location = '/login.html'
+    }
+    document.getElementById('logout').addEventListener('click', logoutUser)
+   
+    
+    
+    // function to retrieve username from local storage. Used to Show name for profile
+    async function renderUsername() {
+       const username = localStorage.getItem('username')
+ 
+       document.getElementById('username').textContent = username
+     }  
+    renderUsername()
+
+
+
+
+
+
+
+    // start trending, most popular section
+      let trending = "TRENDING_DESC"
+      let allTimePopular = "POPULARITY_DESC"
+      let userRated = "SCORE_DESC"
+      let userFavorited = "FAVOURITES_DESC"
+
+
+
+
+      function renderAnime(sort) {
+        const query = `
+          query ($page: Int, $perPage: Int, $search: String) {
+    Page(page: $page, perPage: $perPage) {
+      pageInfo {
+        total
+        perPage
+      }
+      media(search: $search, type: ANIME, sort: ${sort}) {
+        id
+        idMal
+        title {
+          romaji
+          english
+          native
+        }
+        type
+        genres
+        description
+        coverImage {
+          extraLarge
+          medium
+          large
+          color
+        }
+      }
+    }
+  }
+  `;
+
+        let variables = {
+          page: 1,
+          perPage: 12,
+        };
+
+        const headers = {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        };
+
+        // Define the config we'll need for our Api request
+        var url = 'https://graphql.anilist.co',
+          options = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+            },
+            body: JSON.stringify({
+              query: query,
+              variables: variables
+            })
+          };
+
+        // Make the HTTP Api request
+        fetch(url, options).then(handleResponse)
+          .then(handleData)
+          .catch(handleError);
+
+        function handleResponse(response) {
+          return response.json().then(function (json) {
+            return response.ok ? json : Promise.reject(json);
+          });
+        }
+
+        function handleData({ data }) {
+          console.log(data);
+
+
+
+
+          let anime = data.Page.media
+          anime.forEach(anime => {
+            let synopsis = anime.description
+            let unquotedSynopsis = synopsis.replace(/["]+/g, '')
+            let genres = anime.genres
+
+            let trendingList = document.getElementById(sort)
+
+            let trendingAnime = document.createElement('div')
+            trendingAnime.classList.add('cell-lg-2')
+            trendingAnime.classList.add('cell-md-4')
+            trendingAnime.classList.add('cell-sm-6')
+            trendingAnime.classList.add('media-card')
+
+            if (anime.title.english) {
+              trendingAnime.innerHTML = `
+            <div class="img-container thumbnail bg-black fg-white">
+              <img src="${anime.coverImage.large}" alt="anime cover image" class="coverImg"
+              data-role="popover"
+              data-popover-position="right"
+              data-hide-on-leave="true"
+              data-popover-text="
+              <h6 class='title animeTitle'>
+                ${anime.title.english}
+              </h6>
+              <hr>
+              <p>${unquotedSynopsis}</p>
+              <hr>
+              <div></div>
+              "
+              >
+              <button class="button link mt-1 fg-green saveBtn2">+</button>
+            </div>
+            `
+            }
+            else {
+              trendingAnime.innerHTML = `
+            <div class="img-container thumbnail bg-black fg-white">
+              <img src="${anime.coverImage.large}" alt="anime cover image" class="coverImg"
+              data-role="popover"
+              data-popover-position="right"
+              data-hide-on-leave="true"
+              data-popover-text="
+              <h6 class='title animeTitle'>
+                ${anime.title.romaji}
+              </h6>
+              <hr>
+              <p>${unquotedSynopsis}</p>
+              "
+              >
+              <button class="button link success mt-1 fg-green saveBtn2">+</span></button>
+            </div>
+            `
+            }
+            trendingList.append(trendingAnime)
+          })
+        }
+
+        function handleError(error) {
+          alert('Error, check console');
+          console.error(error);
+        }
+
+      }
+
+      renderAnime(userRated)
+      renderAnime(trending)
+      renderAnime(allTimePopular)
+      renderAnime(userFavorited)
+    
+
+  </script>
+
+</body>
+
+</html>
