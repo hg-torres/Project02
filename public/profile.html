@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
-  <link href="metro-icons.css" rel="stylesheet">
+ 
+  <link rel="stylesheet" href="profile.css">
 
   <title>Document</title>
 </head>
@@ -44,9 +45,25 @@
       </ul>
     </li>
   </ul>
-
+<div class="remark dark fg-gray">
 <h1>Profile</h1>
+</div>
 
+<table id="table" class="table">
+  <thead class="fg-white">
+    <tr class="fg-white">
+      <th class="fg-white">#</th>
+      <th class="fg-white">Title</th>
+      <th class="fg-white">Synopsis</th>
+      <th class="fg-white"></th>
+      <th class="fg-white">Rating</th>
+      <th class="fg-white"></th>
+    </tr>
+  </thead>
+  <tbody id="tableBody">
+    
+  </tbody>
+</table>
 
 </div>
 <div id="posts" class="row"></div>
@@ -57,7 +74,9 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
+  var today = new Date();
 
+  var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
   
   // function for logout user to remove from local storage and send back to login screen
   async function logoutUser() {
@@ -109,12 +128,21 @@
       const animeElem = document.createElement('div')
       animeElem.innerHTML = ''
       animeElem.innerHTML = `
-    <div class="">
-      <h2>${title}</h2><img src='${image}' alt='${title}' style="width:75%;">
-      <h4>Rating: ${rating}</h4>
+  <div class="container">
+    <div class="card image-header bg-black">
+      <div class="card-header fg-white "style="background-image: url('${image}')">
+         <h2>${title}</h2>
+         <h6>Rating: ${rating}</h6>
+    </div>
+    <div class="card-content p-2">
+        <p class="fg-gray">Added on: ${date}</p>
       <p>Synopsis: ${synopsis}</p>
-      <button class ="delete" data-index =${id}> Delete </button>
-      </div>
+    </div>
+    <div class="card-footer">
+        <button class="delete" data-index =${id}> Remove </button>
+    </div>
+</div>
+</div>
       `
       document.getElementById('posts').prepend(animeElem)
     }
