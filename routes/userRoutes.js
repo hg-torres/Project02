@@ -1,9 +1,5 @@
 const router = require('express').Router()
-<<<<<<< HEAD
-const { Anime , User} = require('../models')
-=======
 const { Anime, User } = require('../models')
->>>>>>> b026d1da4e49a817c37f0acf8ba9bf0ee60ccd63
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
 
