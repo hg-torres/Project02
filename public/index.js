@@ -113,8 +113,7 @@ function searchFnc(searchInfo) {
               <div class="fade-in">
               <img src='${searchURL}' alt='${searchTitle}'">
               </div>
-              <button class"button link saveBtn">
-                <i class="mif-add fg-green mif-5x" data-index="${searchId}"></i>
+              <button class="button link saveBtn fg-green large" data-index="${searchId}">+
               </button>
               <h3>${searchTitle}</h3>
               <h4>Rating: ${searchScore}</h4>
