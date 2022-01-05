@@ -4,53 +4,70 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
-<link href="metro-icons.css" rel="stylesheet">
-
+  <meta name="viewport" content="width=, initial-scale=1.0">
   <title>Document</title>
+
+  <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
+  <link href="metro-icons.css" rel="stylesheet">
 </head>
+
 <style>
+  body {
+    background-color: black;
+  }
 
-  *
-{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: consolas;
-  color: white;
-}
+  p {
+    background-color: black;
+    padding: 10px;
+  }
 
-body {
-  /* background-image: url('/assets/Background\ Img.jpg'); */
-  background-color: black;
-}
+  img {
+    border: 1px solid black;
+  }
 
-img {
-  /* width: 60%; */
-  margin: auto;
-  display: block;
-  opacity: 0.6;
-}
+  #searchInfo {
+    width: 300px;
+    text-align: center;
+  }
 
-img:hover {
-  opacity: 9;
-}
+  .container {
+    background-color: black;
+    border: 1px solid black;
+    opacity: 0.9;
+
+  }
+
+  /* .text-center {
+    align-text: center;
+  } */
+
+  .navview-content {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    height: 100%;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: consolas;
+  }
 
   .container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    padding: 20px;
-    background-color: black;
-    width: 700px;
+    /* margin-top: -10px; */
+
   }
 
   .container .box {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 320px;
+    height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -102,6 +119,21 @@ img:hover {
   .container .box:nth-child(2):before,
   .container .box:nth-child(2):after {
     background: linear-gradient(315deg, #03a9f4, #ff0058)
+  }
+
+  .container .box:nth-child(3):before,
+  .container .box:nth-child(3):after {
+    background: linear-gradient(315deg, #4dff03, #00d0ff)
+  }
+
+  .container .box:nth-child(4):before,
+  .container .box:nth-child(4):after {
+    background: linear-gradient(315deg, #ff0097, #ffe25c)
+  }
+
+  .container .box:nth-child(5):before,
+  .container .box:nth-child(5):after {
+    background: linear-gradient(315deg, #fff, #0b0742)
   }
 
   .container .box span {
@@ -223,69 +255,104 @@ img:hover {
     border: 1px solid rgba(255, 0, 88, 0.4);
     box-shadow: 0 1px 15px rgba(1, 1, 1, 0.2);
   }
-
 </style>
 
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="login-form">
-        <div class="login-form_logo">
-          <img class="login-form_logo" src="/assets/login-anime.gif  " alt="logo">
-        </div>
-        <h3>Login To Your Account</h3>
-        <hr>
+<ul class="h-menu bg-black fg-white">
+  <li><a href="./index.html">
+      <span class="mif-home mif-lg fg-teal"></span>
+      Home
+    </a></li>
+  <li class="divider"></li>
+  <li><a href="./creators.html">
+      <span class="mif-users mif-lg fg-pink"></span>
+      Creators
+    </a></li>
+  <li>
+    <a href="#" class="dropdown-toggle bg-black fg-white">
+      <span class="mif-user mif-lg fg-amber"></span>
+      Username<span class="mif-arrow-drop-down fg-amber"></span></a>
+    <ul class="d-menu bg-black fg-white" data-role="dropdown">
+      <li><a href="./profile.html">
+          <span class="mif-profile mif-lg fg-violet"></span>
+          Profile</a></li>
+      <li><a href="./login.html">
+          <span class="mif-user-check mif-lg fg-lime"></span>
+          Sign In</a></li>
+      <li><a href="./register.html">
+          <span class="mif-user-plus mif-lg fg-yellow"></span>
+          Create Account</a></li>
+      <li><a href="./index.html">
+          <span class="mif-cross mif-lg fg-red"></span>
+          Sign Out
+        </a></li>
+    </ul>
+  </li>
+</ul>
 
-      <div class="container">
-      
-        <div class="box">
-          <span></span>
-          <div class="content">
-              <label for="lUsername" class="form-label">Username</label>
-                  <input type="text" class="form-control" id="lUsername">
-              <label for="lPassword" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="lPassword">
-            <a id="login" href="./login.html">Login</a>
-            <a id="register" href="./register.html">Register</a>
-          </div>
-        </div>
-
-      </div>
-
-      </div>
+    <div class="container">
+      <!-- <h1>THE CREATORS</h1> -->
     </div>
-  </div>
-  <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  
-  <script>
-    async function loginUser(user) {
-      try {
-        const { data } = await axios.post('/api/users/login', user)
-        return data
 
-      } catch (err) {
-        alert('Something Went Wrong. Please Try Again.')
-      }
-    }
-    document.getElementById('login').addEventListener('click', async function (event) {
-      event.preventDefault()
+    <div class="container">
 
-      const { username, token } = await loginUser({
-        username: document.getElementById('lUsername').value,
-        password: document.getElementById('lPassword').value
-      })
+      <div class="box">
+        <span></span>
+        <div class="content">
+          <img src="assets/austin.png" width="200px" height="200px">
+          <h2>Austin Hall</h2>
+          <p>.</p>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
 
-      if (token) {
-        localStorage.setItem('username', username)
-        localStorage.setItem('token', token)
-        location = '/'
-      } else {
-        alert('Invalid Username Or Password. Please Try Again.')
-      }
-    })
+      <div class="box">
+        <span></span>
+        <div class="content">
+          <img src="assets/chanwoo.png" width="200px" height="200px">
+          <h2>Chanwoo Hwang</h2>
+          <p>.</p>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
 
-  </script>
+      <div class="box">
+        <span></span>
+        <div class="content">
+          <img src="assets/Jaz.png" width="200px" height="200px">
+          <h2>Jazmine Jose</h2>
+          <p>.</p>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <span></span>
+        <div class="content">
+          <img src="assets/peter.png" width="200px" height="200px">
+          <h2>Peter Song</h2>
+          <p>.</p>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <span></span>
+        <div class="content">
+          <h2>Henry Torres</h2>
+          <p>.</p>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+
+<script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 </body>
 
 </html>

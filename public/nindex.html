@@ -4,47 +4,62 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
-<link href="metro-icons.css" rel="stylesheet">
-
+  <meta name="viewport" content="width=, initial-scale=1.0">
   <title>Document</title>
+
+  <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
+  <link href="metro-icons.css" rel="stylesheet">
 </head>
+
 <style>
+  body {
+    background-color: black;
+  }
 
-  *
-{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: consolas;
-  color: white;
-}
+  p {
+    background-color: black;
+    padding: 10px;
+  }
 
-body {
-  /* background-image: url('/assets/Background\ Img.jpg'); */
-  background-color: black;
-}
+  img {
+    border: 1px solid black;
+  }
 
-img {
-  /* width: 60%; */
-  margin: auto;
-  display: block;
-  opacity: 0.6;
-}
+  #searchInfo {
+    width: 300px;
+    text-align: center;
+  }
 
-img:hover {
-  opacity: 9;
-}
+  .container {
+    background-color: black;
+    border: 1px solid black;
+  }
+/* 
+  .text-center {
+    align-text: center;
+  } */
+
+  .navview-content {
+    background-image: url('/assets/Background\ Img.jpg');
+    background-color: black;
+    color: white;
+    padding: 10px;
+    height: 100%;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: consolas;
+  }
 
   .container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    padding: 20px;
-    background-color: black;
-    width: 700px;
+    padding: 10px;
   }
 
   .container .box {
@@ -224,68 +239,80 @@ img:hover {
     box-shadow: 0 1px 15px rgba(1, 1, 1, 0.2);
   }
 
+  /* ------ */
+  
 </style>
 
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="login-form">
-        <div class="login-form_logo">
-          <img class="login-form_logo" src="/assets/login-anime.gif  " alt="logo">
-        </div>
-        <h3>Login To Your Account</h3>
-        <hr>
+<d>
+  <div data-role="navview">
+    <div data-role="navview">
+      <div class="navview-pane">
+        <button class="pull-button">
+          <span class="default-icon-menu"></span>
+        </button>
 
-      <div class="container">
-      
-        <div class="box">
-          <span></span>
-          <div class="content">
-              <label for="lUsername" class="form-label">Username</label>
-                  <input type="text" class="form-control" id="lUsername">
-              <label for="lPassword" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="lPassword">
-            <a id="login" href="./login.html">Login</a>
-            <a id="register" href="./register.html">Register</a>
-          </div>
-        </div>
+        <ul class="navview-menu">
+          <li class="item-header">Main pages</li>
+
+          <li>
+            <a href="./api.html">
+              <span class="icon"><span class="mif-search"></span></span>
+              <span class="caption">Search Anime</span>
+            </a>
+
+          </li>
+          <li>
+            <a href="./saved.html">
+              <span class="icon"><span class="mif-list"></span></span>
+              <span class="caption">Your Anime List</span>
+            </a>
+          </li>
+          <li>
+            <a href="./creators.html">
+              <span class="icon"><span class="mif-user"></span></span>
+              <span class="caption">Creators</span>
+            </a>
+          </li>
+          <li>
+            <a href="./login.html">
+              <span class="icon"><span class="mif-cross"></span></span>
+              <span class="caption">Sign Out</span>
+            </a>
+          </li>
+        </ul>
 
       </div>
+
+      <div class="navview-content">
+        <div class="container">
+          <h1>ANIME LIST</h1>
+        </div>
+
+        <div class="container">
+
+          <div class="box">
+            <span></span>
+            <div class="content">
+              <a href="./login.html">Login</a>
+            </div>
+          </div>
+
+          <div class="box">
+            <span></span>
+            <div class="content">
+              <a href="./register.html">Sign up</a><br>
+            </div>
+          </div>
+
+        </div>
 
       </div>
     </div>
-  </div>
-  <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  
-  <script>
-    async function loginUser(user) {
-      try {
-        const { data } = await axios.post('/api/users/login', user)
-        return data
 
-      } catch (err) {
-        alert('Something Went Wrong. Please Try Again.')
-      }
-    }
-    document.getElementById('login').addEventListener('click', async function (event) {
-      event.preventDefault()
 
-      const { username, token } = await loginUser({
-        username: document.getElementById('lUsername').value,
-        password: document.getElementById('lPassword').value
-      })
+    <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-      if (token) {
-        localStorage.setItem('username', username)
-        localStorage.setItem('token', token)
-        location = '/'
-      } else {
-        alert('Invalid Username Or Password. Please Try Again.')
-      }
-    })
-
-  </script>
-</body>
+    </body>
 
 </html>
