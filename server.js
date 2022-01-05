@@ -4,7 +4,7 @@ const express = require('express')
 const { join } = require('path')
 
 const passport = require('passport')
-const { User, /*Post*/ } = require('./models') // change Post to actual var
+const { User, Anime } = require('./models') // change Post to actual var
 const { Strategy: JWTStrategy, ExtractJwt } = require('passport-jwt')
 
 const app = express()
@@ -26,7 +26,7 @@ passport.use(new JWTStrategy({
   secretOrKey: process.env.SECRET
 }, async function ({ id }, cb) {
   try {                                         // change Post to actual var
-    const user = await User.findOne({ where: { id }, include: [/*Post*/] })
+    const user = await User.findOne({ where: { id }, include: [Anime] })
     cb(null, user)
   } catch (err) {
     cb(err, null)

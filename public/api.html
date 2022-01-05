@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
+  <link rel="stylesheet" href="api.css">
+  <link rel="stylesheet" href="aniList.css">
+  <title>Search Page</title>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div data-role="appbar" data-expand-point="md" class="bg-darkCyan fg-white">
+        <a href="#" class="brand no-hover d-flex flex-justify-center">
+          <span class="">
+            AnimeViewer
+          </span>
+        </a>
+        <ul class="app-bar-menu">
+          <li><a href="#">Home</a></li>
+          <li>
+            <a href="#" class="dropdown-toggle">MyList</a>
+            <ul class="d-menu" data-role="dropdown">
+              <li><a href="#">Anime</a></li>
+              <li><a href="#">Manga</a></li>
+              <li class="divider bg-lightGray"></li>
+              <li><a href="#">All</a></li>
+            </ul>
+          </li>
+          <li><a href="api2profile.html">Profile</a></li>
+          <li>
+            <a href="#" class="dropdown-toggle">Search</a>
+            <ul class="d-menu" data-role="dropdown">
+              <li><a href="api.html">Anime</a></li>
+              <li><a href="#">Manga</a></li>
+              <li class="divider bg-lightGray"></li>
+              <li><a href="#">All</a></li>
+            </ul>
+          </li>
+          <li><a href="#">About Us</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="navCover">
+    </div>
+    <div class="container mt-4 d-flex">
+      <input type="text" data-role="input" placeholder="Search anime" id="searchInput">
+      <button class="button info outline" id="searchBtn">Search</button>
+
+    </div>
+  </header>
+  
+  <div class="container">
+
+    <div class="row" id="results"></div>
+    <br>
+    
+    
+    
+    
+  </div>
+  <div class="container">
+    <div class= "row" id="more"></div>
+  </div>
+  <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
+  <script src="aniList.js"></script>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+
+
+
+
+    // click event for searching anime
+    document.getElementById(`search`).addEventListener(`click`, event => {
+      event.preventDefault()
+      const searchInfo = document.getElementById(`searchInfo`).value
+
+    // removes previous search from innerHTML 
+      document.getElementById('results').innerHTML = ''
+      document.getElementById('more').innerHTML = ''
+
+    // adds more results button after first search (currently only using 10 results)
+      let moreResults = document.createElement('button');
+      moreResults.classList = "center-align col s12 m6 l6 offset-m3 offset-l3";
+      moreResults.innerHTML = "More Results";
+
+      document.getElementById('more').append(moreResults)
+
+
+    // get request for anime
+       axios.get(`https://kitsu.io/api/edge/anime?filter[text]=${searchInfo}`)
+        .then(res => {
+           console.log(res.data.data)
+          const search = res.data.data
+          for (let searchIndex = 0; searchIndex < 5; searchIndex++) {
+            let searchResults = search[searchIndex];
+            let searchId = searchResults.id;
+            let searchURL = searchResults.attributes.posterImage.medium;
+            let searchTitle = searchResults.attributes.canonicalTitle;
+            let searchSynopsis = searchResults.attributes.synopsis;
+            let searchScore = searchResults.attributes.averageRating;
+            let searchElem = document.createElement('div');
+            searchElem.classList = "col s12 m6 l6";
+
+            // what is going to be appended on the page from API information
+            searchElem.innerHTML =  
+               `
+              <div >
+              <h3>${searchTitle}</h3><img src='${searchURL}' alt='${searchTitle}' style="width:75%;">
+              <h4>Rating: ${searchScore}</h4>
+              <p>Synopsis: ${searchSynopsis}</p>
+              <button class ="save btn-btn-primary" data-index="${searchId}">"Add to my List"</button>
+              <div>
+
+              `;
+
+
+
+
+
+
+            // click even to save and push to database using ID/data-index
+            document.addEventListener('click', event => {
+              
+              const index = parseInt(event.target.dataset.index)
+              if (event.target.className === 'save btn-btn-primary' && index == searchId) {
+                console.log(index)
+                console.log(searchId)
+                
+                // console.log(searchResults)
+                const anime = {
+                 title: `${searchTitle}`,
+                  image: `${searchURL}`,
+                  rating: `${searchScore}`,
+                  synopsis: `${searchSynopsis}`
+                }
+                console.log(anime)
+              
+                axios.post('/api/animes', anime, {
+                  headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                  }
+                })
+                .then(() => console.log(`anime saved`))
+                .catch(err => console.log(err))
+               
+              }
+            });
+
+        
+            document.getElementById(`results`).append(searchElem)
+            
+          }
+
+
+          // get request for second anime search (same as above)
+          document.getElementById('more').addEventListener('click', event => {
+            document.getElementById('results').innerHTML = ''
+            document.getElementById('more').innerHTML = ''
+
+            for (let searchIndex = 5; searchIndex < 10; searchIndex++) {
+              let searchResults = search[searchIndex];
+              let searchId = searchResults.id
+              let searchURL = searchResults.attributes.posterImage.medium;
+              let searchTitle = searchResults.attributes.canonicalTitle;
+              let searchSynopsis = searchResults.attributes.synopsis;
+              let searchScore = searchResults.attributes.averageRating;
+              let searchElem2 = document.createElement('div');
+              searchElem2.classList = "col";
+
+
+              searchElem2.innerHTML =
+              `
+              <h2>${searchTitle}</h2><img src='${searchURL}' alt='${searchTitle}' style="width:75%;">
+              <h4>Score: ${searchScore}</h4>
+              <p>Synopsis: ${searchSynopsis}</p>
+              <button class ="save btn-btn-primary" data-index="${searchId}">"Add to my List"</button>
+              `;
+              
+
+              document.addEventListener('click', event => {
+                console.log(`ping`)
+              const index = parseInt(event.target.dataset.index)
+              if (event.target.className === 'save btn-btn-primary' && index == searchId) {
+
+                console.log(searchResults)
+                const anime = {
+                  title: `${searchTitle}`,
+                  image: `${searchURL}`,
+                  rating: `${searchScore}`,
+                  synopsis: `${searchSynopsis}`
+                }
+                console.log(anime)
+                // console.log(anime)
+                axios.post('/api/animes', anime, {
+                  headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                  }
+                })
+
+          
+                
+                .then(() => console.log(`anime saved`))
+                .catch(err => console.log(err))
+                
+              }
+            });
+
+              document.getElementById(`results`).append(searchElem2)
+
+            }
+          })
+
+        })
+        .catch(err => console.log(err))
+    })
+
+      
+
+ 
+
+  </script>
+
+</body>
+
+</html>

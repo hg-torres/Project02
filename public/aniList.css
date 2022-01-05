@@ -1,0 +1,26 @@
+body {
+  background-color: #edf1f5;
+}
+
+.coverImg {
+  height: 100%;
+  width: auto;
+}
+
+.animeTitle {
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.thumbnail {
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.img-container img {
+  height: 20rem;
+  width: auto;
+}
+
