@@ -5,104 +5,55 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- BOOTSTRAP -->
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
-
-  <!-- MATERIALIZE -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
   <link rel="stylesheet" href="api.css">
-
-  <title>Anime</title>
+  <link rel="stylesheet" href="aniList.css">
+  <title>Search Page</title>
 </head>
 
 <body>
-<!-- Nav Bar-->
- 
-  <!-- <nav>
-    <div class="nav-wrapper">
-      
-      <a class="center-align">Welcome Peter</a>
-      <a href="#!" class="brand-logo center">Title</a>
-      
-
-      <ul class="right hide-on-med-and-down">
-        <li><a href="sass.html">Home</a></li>
-        <li><a href="badges.html">About Us</a></li>
-        <li><a href="badges.html">Profile</a></li>
-        <li><a href="badges.html">Logout</a></li>
-        
-      </ul>
-    </div>
-  </nav> -->
-
-  <!-- Dropdown Structure -->
-  <ul id="dropdown1" class="dropdown-content">
-    <li><a href="#!">Profile</a></li>
-    <li class="divider"></li>
-    <li><a href="#!">Logo</a></li>
-  </ul>
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">Title</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="sass.html">Home</a></li>
-        <li><a href="badges.html">About Us</a></li>
-        <!-- Dropdown Trigger -->
-        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Name Goes Here<i
-              class="material-icons right">arrow_drop_down</i></a></li>
-      </ul>
-    </div>
-  </nav>
-
-
-  <!-- <div class="carousel carousel-slider" data-indicators="true">
-    <div class="carousel-fixed-item center">
-      <a class="btn waves-effect white grey-text darken-text-2">button</a>
-    </div>
-    <a class="carousel-item" href="#one!"><img src="./assets/animeWallpaper.jpeg"></a>
-    <a class="carousel-item" href="#two!"><img src="./assets/BackgroundImg.jpg"></a>
-
-  </div> -->
-
-  <div class="carousel carousel-slider center" data-indicators="true">
-    <div class="carousel-fixed-item center">
-      
-    </div>
-    <div class="carousel-item img1 white-text" href="#one!" >
-      <h1>Anime</h1>
-      <!-- <p class="white-text">This is your first panel</p> -->
-    </div>
-    <div class="carousel-item img2 white-text" href="#two!">
-      <h1 >Anime</h1>
-      <!-- <p class="white-text">This is your second panel</p> -->
-    </div>
-    
-  </div>
-
-
-
-
-
-
-  <h1 class="center-align">Anime Search</h1>
-  <div class="container">
-    <div class="row">
-      <div class="col l12 class center-align" >
-    <!-- <a href="/saved">Saved </a> -->
-    <form >
-      <p>
-        <label for="searchInfo">Search for your anime here!</label>
-        <input class="center-align" type="text" name="search" id="searchInfo">
-      </p>
-      <button id="search">Search</button>
-    </form>
+  <header>
+    <nav>
+      <div data-role="appbar" data-expand-point="md" class="bg-darkCyan fg-white">
+        <a href="#" class="brand no-hover d-flex flex-justify-center">
+          <span class="">
+            AnimeViewer
+          </span>
+        </a>
+        <ul class="app-bar-menu">
+          <li><a href="#">Home</a></li>
+          <li>
+            <a href="#" class="dropdown-toggle">MyList</a>
+            <ul class="d-menu" data-role="dropdown">
+              <li><a href="#">Anime</a></li>
+              <li><a href="#">Manga</a></li>
+              <li class="divider bg-lightGray"></li>
+              <li><a href="#">All</a></li>
+            </ul>
+          </li>
+          <li><a href="api2profile.html">Profile</a></li>
+          <li>
+            <a href="#" class="dropdown-toggle">Search</a>
+            <ul class="d-menu" data-role="dropdown">
+              <li><a href="api.html">Anime</a></li>
+              <li><a href="#">Manga</a></li>
+              <li class="divider bg-lightGray"></li>
+              <li><a href="#">All</a></li>
+            </ul>
+          </li>
+          <li><a href="#">About Us</a></li>
+        </ul>
       </div>
+    </nav>
+    <div class="navCover">
     </div>
-  </div>
+    <div class="container mt-4 d-flex">
+      <input type="text" data-role="input" placeholder="Search anime" id="searchInput">
+      <button class="button info outline" id="searchBtn">Search</button>
+
+    </div>
+  </header>
+  
   <div class="container">
 
     <div class="row" id="results"></div>
@@ -115,22 +66,13 @@
   <div class="container">
     <div class= "row" id="more"></div>
   </div>
-
-  <!-- BOOTSTRAP -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script> -->
-
-  <!-- Materialize -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
+  <script src="aniList.js"></script>
 
 
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script>
-
-// Materialize to use JS ex: Nav Bar and drop down menus 
-   M.AutoInit()
 
 
 
