@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const { User, Post } = require('../models')
+const { User, Anime} = require('../models')
 const sequelize = require('../db')
 
 async function seeder() {
@@ -12,7 +12,7 @@ async function seeder() {
     await User.register(new User({ firstName: 'John', lastName: 'Doe', username: 'johndoe', email: 'johndoe@gmail.com' }), 'password1234')
     await User.register(new User({ firstName: 'Jane', lastName: 'Doe',username: 'janedoe', email: 'janedoe@gmail.com' }), 'password4321')
     await User.register(new User({ firstName: 'Jack', lastName: 'Doe',username: 'jackdoe', email: 'jackdoe@gmail.com' }), 'rootroot')
-    await Post.bulkCreate(require('./postSeed.js'))
+    await Anime.bulkCreate(require('./seeds.js'))
   } catch (err) {
     console.log(err)
   }
@@ -21,3 +21,5 @@ async function seeder() {
   console.log('----Data Seeded----')
 
   process.exit()
+}
+  seeder()
