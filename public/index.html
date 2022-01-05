@@ -280,61 +280,124 @@
   <script>
 
 
+// Anime Search function
 
+  searchInfo = "Made in Abyss"
 
+  function searchFnc(searchInfo) {
+    // Here we define our query as a multi-line string
+    // Storing it in a separate .graphql/.gql file is also possible
+    const query = `
+                    query ($id: Int, $page: Int, $perPage: Int, $search: String) {
+            Page(page: $page, perPage: $perPage) {
+              pageInfo {
+                total
+                currentPage
+                lastPage
+                hasNextPage
+                perPage
+              }
+              media(id: $id, search: $search, sort: POPULARITY_DESC) {
+                id
+                idMal
+                title {
+                  romaji
+                  english
+                  native
+                }
+                type
+                endDate {
+                  year
+                  month
+                  day
+                }
+                startDate {
+                  year
+                  month
+                  day
+                }
+                studios(isMain: true) {
+                  nodes {
+                    name
+                  }
+                }
+                isAdult
+                source
+                genres
+                volumes
+                episodes
+                chapters
+                siteUrl
+                status
+                averageScore
+                meanScore
+                popularity
+                description
+                favourites
+                coverImage {
+                  extraLarge
+                  medium
+                  large
+                  color
+                }
+              }
+            }
+  }`;
 
-    // click event for searching anime
-    document.getElementById(`search`).addEventListener(`click`, event => {
-      event.preventDefault()
-      const searchInfo = document.getElementById(`searchInfo`).value
+    // Define our query variables and values that will be used in the query request
+    var variables = {
+      search: searchInfo,
+      page: 1,
+      perPage: 5
+    };
 
-    // removes previous search from innerHTML 
-      document.getElementById('results').innerHTML = ''
-      document.getElementById('more').innerHTML = ''
+    // Define the config we'll need for our Api request
+    var url = 'https://graphql.anilist.co',
+      options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          query: query,
+          variables: variables
+        })
+      };
 
-    // adds more results button after first search (currently only using 10 results)
-      let moreResults = document.createElement('button');
-      moreResults.classList = "center-align col s12 m6 l6 offset-m3 offset-l3";
-      moreResults.innerHTML = "More Results";
+    // Make the HTTP Api request
+    fetch(url, options).then(handleResponse)
+      .then(handleData)
+      .catch(handleError);
 
-      document.getElementById('more').append(moreResults)
+    function handleResponse(response) {
+      return response.json().then(function (json) {
+        return response.ok ? json : Promise.reject(json);
+      });
+    }
 
+    function handleData(data) {
+      console.log(data);
+      let animeResult = data.data.Page.media
+      console.log(data.data.Page.media[0].title.english)
 
-    // get request for anime
-       axios.get(`https://kitsu.io/api/edge/anime?filter[text]=${searchInfo}`)
-        .then(res => {
-           console.log(res.data.data)
-          const search = res.data.data
-          for (let searchIndex = 0; searchIndex < 5; searchIndex++) {
-            let searchResults = search[searchIndex];
-            let searchId = searchResults.id;
-            let searchURL = searchResults.attributes.posterImage.medium;
-            let searchTitle = searchResults.attributes.canonicalTitle;
-            let searchSynopsis = searchResults.attributes.synopsis;
-            let searchScore = searchResults.attributes.averageRating;
-            let searchElem = document.createElement('div');
-            searchElem.classList = "col s12 m6 l6";
+      animeResult.forEach(anime => {
+        let searchId = anime.id;
+        let searchURL = anime.coverImage.medium;
+        let searchTitle = anime.title.english;
+        let searchSynopsis = anime.description;
+        let searchScore = anime.meanScore;
 
-            // what is going to be appended on the page from API information
-            // searchElem.innerHTML =  
-            //    `
-            //   <div >
-            //   <h3>${searchTitle}</h3><img src='${searchURL}' alt='${searchTitle}' style="width:75%;">
-            //   <h4>Rating: ${searchScore}</h4>
-            //   <p>Synopsis: ${searchSynopsis}</p>
-            //   <button class ="save btn-btn-primary" data-index="${searchId}">"Add to my List"</button>
-            //   <div>
-            //   `;
+        let searchElem = document.createElement('div');
+        searchElem.classList = " ";
 
-          
-             searchElem.innerHTML =
-              `
+        searchElem.innerHTML =
+          `
               <div class="oneAnime borderBottom">
               <div class="fade-in">
               <img src='${searchURL}' alt='${searchTitle}'">
               </div>
               <button class="button link saveBtn fg-green" data-index="${searchId}">+
-          
               </button>
               <h3>${searchTitle}</h3>
               <h4>Rating: ${searchScore}</h4>
@@ -342,108 +405,99 @@
               </div>
               `;
 
+        // click even to save and push to database using ID/data-index
+        document.addEventListener('click', event => {
 
+          const index = parseInt(event.target.dataset.index)
+          if (event.target.className === 'button link saveBtn fg-green' && index == searchId) {
+            console.log(index)
+            console.log(searchId)
 
-
-
-
-            // click even to save and push to database using ID/data-index
-            document.addEventListener('click', event => {
-              
-              const index = parseInt(event.target.dataset.index)
-              if (event.target.className === 'button link saveBtn fg-green' && index == searchId) {
-                console.log(index)
-                console.log(searchId)
-                
-                // console.log(searchResults)
-                const anime = {
-                 title: `${searchTitle}`,
-                  image: `${searchURL}`,
-                  rating: `${searchScore}`,
-                  synopsis: `${searchSynopsis}`
-                }
-                console.log(anime)
-
-              
-              
-                axios.post('/api/animes', anime, {
-                  headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`
-                  }
-                })
-                .then(() => console.log(`anime saved`))
-                .catch(err => location = 'login.html')
-              }
-
-
-
-            });
-
-        
-            document.getElementById(`results`).append(searchElem)
-            
-          }
-
-
-          // get request for second anime search (same as above)
-          document.getElementById('more').addEventListener('click', event => {
-            document.getElementById('results').innerHTML = ''
-            document.getElementById('more').innerHTML = ''
-
-            for (let searchIndex = 5; searchIndex < 10; searchIndex++) {
-              let searchResults = search[searchIndex];
-              let searchId = searchResults.id
-              let searchURL = searchResults.attributes.posterImage.medium;
-              let searchTitle = searchResults.attributes.canonicalTitle;
-              let searchSynopsis = searchResults.attributes.synopsis;
-              let searchScore = searchResults.attributes.averageRating;
-              let searchElem2 = document.createElement('div');
-              searchElem2.classList = "col";
-
-
-              searchElem2.innerHTML =
-              `
-              <h2>${searchTitle}</h2><img src='${searchURL}' alt='${searchTitle}' style="width:75%;">
-              <h4>Score: ${searchScore}</h4>
-              <p>Synopsis: ${searchSynopsis}</p>
-              <button class ="save btn-btn-primary" data-index="${searchId}">"Add to my List"</button>
-              `;
-              
-
-              document.addEventListener('click', event => {
-                console.log(`ping`)
-              const index = parseInt(event.target.dataset.index)
-              if (event.target.className === 'save btn-btn-primary' && index == searchId) {
-
-                console.log(searchResults)
-                const anime = {
-                  title: `${searchTitle}`,
-                  image: `${searchURL}`,
-                  rating: `${searchScore}`,
-                  synopsis: `${searchSynopsis}`
-                }
-                console.log(anime)
-                // console.log(anime)
-                axios.post('/api/animes', anime, {
-                  headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`
-                  }
-                })
-                
-                .then(() => console.log(`anime saved`))
-                .catch(err => location = 'login.html')
-                
-              }
-            });
-
-              document.getElementById(`results`).append(searchElem2)
-
+            // console.log(searchResults)
+            const anime = {
+              title: `${searchTitle}`,
+              image: `${searchURL}`,
+              rating: `${searchScore}`,
+              synopsis: `${searchSynopsis}`
             }
-          })
+            console.log(anime)
 
-        })
-        .catch(err => console.log(err))
-    })
+            axios.post('/api/animes', anime, {
+              headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+              }
+            })
+              .then(() => console.log(`anime saved`))
+              .catch(err => location = 'login.html')
+          }
+        });
+
+
+        document.getElementById(`results`).append(searchElem)
+      })
+
+
+
+    }
+
+    function handleError(error) {
+      alert('Error, check console');
+      console.error(error);
+    }
+
+
+  }
+  
+
+
+  // click event for searching anime
+  document.getElementById(`search`).addEventListener(`click`, event => {
+    event.preventDefault()
+    const searchInfo = document.getElementById(`searchInfo`).value
+    console.log(searchInfo)
+
+    // removes previous search from innerHTML 
+    document.getElementById('results').innerHTML = ''
+    document.getElementById('more').innerHTML = ''
+
+    // adds more results button after first search (currently only using 10 results)
+    let moreResults = document.createElement('button');
+    moreResults.classList = "center-align col s12 m6 l6 offset-m3 offset-l3";
+    moreResults.innerHTML = "More Results";
+
+    document.getElementById('more').append(moreResults)
+
+    searchFnc(searchInfo)
+
+
+
+
+
+
+
+  })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
