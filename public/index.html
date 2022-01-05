@@ -186,8 +186,8 @@
     </a></li>
   <li>
     <a href="#" class="dropdown-toggle bg-black fg-white">
-      <span class="mif-user mif-lg fg-amber"></span>
-      Username<span class="mif-arrow-drop-down fg-amber"></span></a>
+      <span id="username" class="mif-user mif-lg fg-amber"></span>
+      <span class="mif-arrow-drop-down fg-amber"></span></a>
     <ul class="d-menu bg-black fg-white" data-role="dropdown">
       <li><a href="./profile.html">
           <span class="mif-profile mif-lg fg-violet"></span>
@@ -198,9 +198,8 @@
       <li><a href="./register.html">
           <span class="mif-user-plus mif-lg fg-yellow"></span>
           Create Account</a></li>
-      <li><a href="./index.html">
-          <span id="logout" class="mif-cross mif-lg fg-red"></span>
-          Sign Out
+      <li>
+          <a id="logout" class="mif-cross mif-lg fg-red" href="#">Log Out</a>
         </a></li>
     </ul>
   </li>
@@ -456,6 +455,7 @@
       location = '/login.html'
     }
     document.getElementById('logout').addEventListener('click', logoutUser)
+   
     
     
     // function to retrieve username from local storage. Used to Show name for profile
