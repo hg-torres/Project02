@@ -5,34 +5,35 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
-<link href="metro-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
+  <link href="metro-icons.css" rel="stylesheet">
   <title>Document</title>
 </head>
 <style>
-  *
-{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: consolas;
-}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: consolas;
+  }
 
-body {
-  background-color: black;
-  color: white;
-}
+  body {
+    background-image:
+    url('./assets/haikyu1.png'),
+    url('./assets/haikyu2.png');
+    background-color: black;
+    color: white;
+    background-repeat: no-repeat;
+    background-position:
+      top 50px left 30px,
+      top 50px right;
+    background-size: 
+      30%,
+      20%;
+    /* background-position: bottom 40px right 50px; */
+    /* background-position: center bottom -550px ; */
+  }
 
-img {
-  /* width: 60%; */
-  margin: auto;
-  display: block;
-  opacity: 0.6;
-}
-
-img:hover {
-  opacity: 9;
-}
 
   .container {
     display: flex;
@@ -43,6 +44,10 @@ img:hover {
     background-color: black;
     color: white;
     width: 700px;
+    background: transparent;
+    /* position: relative;
+    right: -10px;
+    top: -50px; */
   }
 
   .container .box {
@@ -54,7 +59,6 @@ img:hover {
     align-items: center;
     margin: 40px 30px;
     transition: 0.5s;
-    box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
   }
 
   .container .box::before {
@@ -65,13 +69,13 @@ img:hover {
     width: 100%;
     height: 100%;
     text-decoration: none;
-    background: #fff;
+    background: #000;
     border-radius: 8px;
     /* transform: skewX(15deg); */
     transition: 0.5s;
   }
 
-  /* .container .box::after {
+  .container .box::after {
     content: '';
     position: absolute;
     top: 0;
@@ -83,19 +87,18 @@ img:hover {
     transform: skewX(15deg);
     transition: 0.5s;
     filter: blur(30px);
-  } */
-/* 
+  } 
+  
   .container .box:hover:before,
   .container .box:hover:after {
     transform: skewX(0deg);
     left: 20px;
     width: calc(100% - 90px);
-
-  } */
+  }
 
   .container .box:nth-child(1):before,
   .container .box:nth-child(1):after {
-    background: linear-gradient(315deg, #000, #577590)
+    background: linear-gradient(315deg, rgb(245, 133, 4), #b9b19f)
   }
 
   .container .box span {
@@ -183,10 +186,10 @@ img:hover {
     color: #fff;
   }
 
-  /* .container .box:hover .content {
+  .container .box:hover .content {
     left: -25px;
     padding: 60px 40px;
-  } */
+  }
 
   .container .box .content h2 {
     font-size: 2em;
@@ -212,46 +215,80 @@ img:hover {
     margin-top: 5px;
   }
 
-  /* .container .box .content a:hover {
+  .container .box .content a:hover {
     background: #ffcf4d;
     border: 1px solid rgba(255, 0, 88, 0.4);
     box-shadow: 0 1px 15px rgba(1, 1, 1, 0.2);
-  } */
-
-
+  }
 </style>
+
+
+
 <body>
+  <div class="background2"></div>
+
+    <ul class="h-menu bg-black fg-white">
+      <li><a href="./index.html">
+          <span class="mif-home mif-lg fg-teal"></span>
+          Home
+        </a></li>
+      <li class="divider"></li>
+      <li><a href="./creators.html">
+          <span class="mif-users mif-lg fg-pink"></span>
+          Creators
+        </a></li>
+      <li>
+        <a href="#" class="dropdown-toggle bg-black fg-white">
+          <span class="mif-user mif-lg fg-amber"></span>
+          Username<span class="mif-arrow-drop-down fg-amber"></span></a>
+        <ul class="d-menu bg-black fg-white" data-role="dropdown">
+          <li><a href="./profile.html">
+              <span class="mif-profile mif-lg fg-violet"></span>
+              Profile</a></li>
+          <li><a href="./login.html">
+              <span class="mif-user-check mif-lg fg-lime"></span>
+              Sign In</a></li>
+          <li><a href="./register.html">
+              <span class="mif-user-plus mif-lg fg-yellow"></span>
+              Create Account</a></li>
+          <li><a href="./index.html">
+              <span class="mif-cross mif-lg fg-red"></span>
+              Sign Out
+            </a></li>
+        </ul>
+      </li>
+    </ul>
+
   <div class="container">
     <div class="row">
       <div class="register-form">
-        <div class="register-form_logo">
+        <!-- <div class="register-form_logo">
           <img class="register-form_logo" src="/assets/register-anime.gif" alt="logo">
-        </div>
+        </div> -->
         <h3>Register New Account</h3>
         <hr>
 
-    <div class="container">
-    
-      <div class="box">
-        <span></span>
-        <div class="content">
-          <label for="rFistname" class="form-label">First name</label>
-          <input type="text" class="form-control" id="rFirstname">
-          <label for="rLastname" class="form-label">Last name</label>
-          <input type="text" class="form-control" id="rLastname">
-          <label for="rUsername" class="form-label">Username</label>
-          <input type="text" class="form-control" id="rUsername">
-          <label for="rEmail" class="form-label">Email</label>
-          <input type="email" class="form-control" id="rEmail">
-        
-          <label for="rPassword" class="form-label">Password</label>
-          <input type="password" class="form-control" id="rPassword">
-        
-          <a id="register" href="./register.html">Register</a>
+        <div class="container">
+          <div class="box">
+            <span></span>
+            <div class="content">
+              <label for="rFistname" class="form-label">First name</label>
+              <input type="text" class="form-control" id="rFirstname">
+              <label for="rLastname" class="form-label">Last name</label>
+              <input type="text" class="form-control" id="rLastname">
+              <label for="rUsername" class="form-label">Username</label>
+              <input type="text" class="form-control" id="rUsername">
+              <label for="rEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" id="rEmail">
+
+              <label for="rPassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="rPassword">
+
+              <a id="register" href="./register.html">Register</a>
+            </div>
+          </div>
+
         </div>
-      </div>
-    
-    </div>
 
       </div>
     </div>

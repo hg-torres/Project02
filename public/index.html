@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,11 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- BOOTSTRAP -->
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
-
-  <!-- MATERIALIZE -->
+  <!-- METRO 4  -->
   <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
   <link href="metro-icons.css" rel="stylesheet">
 
@@ -18,203 +13,244 @@
 
   <title>Anime</title>
 
-<style>
+  <style>
+    body {
+      /* background-image: url('https://user-images.githubusercontent.com/92974218/148212131-5c2488b4-bc88-492e-8cec-c452cd05973d.jpg');  */
+      background-color: black;
+      color: white;
+      font-family: consolas;
+      background-repeat: no-repeat;
+      background-position:
+        bottom left;
+    }
 
-body {
-  /* background-image: url('https://images.hdqwalls.com/download/yuji-itadori-anime-boy-5k-ph-5120x2880.jpg'); */
-  background-color: black;
-  color: white;
-  font-family: consolas;
+.word {
+  /* background: transparent; */
+  color: black;
+  position: relative;
+  right: -70px;
+  top: 135px;
+  width: 100px;
+  height: 100px;
+  /* border: 1px solid green; */
 }
 
 header {
-    width: 100%;
-    opacity: 0.5;
-    position: relative;
-    top: 100px;
-    background-color: black;
-    color: white;
-    text-align: center;
+  width: 100%;
+  opacity: 0.5;
+  position: relative;
+  top: 100px;
+  background-color: black;
+  color: white;
+  text-align: center;
 }
 
-/* .title {
+    /* .title {
   margin-top: 100px;
 } */
 
-.container {
-  /* background-color: rgb(51, 48, 48); */
-  color: white;
-  margin-top: 10px;
-  padding: 20px;
-  margin-bottom: 20px;
-}
+    .container {
+      /* background-color: rgb(51, 48, 48); */
+      color: white;
+      margin-top: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
 
-.yellow {
-  border: 1px solid rgb(41, 228, 135);
-}
+    .yellow {
+      border: 1px solid rgb(41, 228, 135);
+    }
 
-.oneAnime  {
-  /* border: 1px solid black; */
-  /* background-color: rgb(51, 48, 48);   */
-  text-align: left; 
-  width: 100%;
-  height: 100%;
-  margin: 5px;
-  padding: 5px;
-  object-fit: cover;
-}
+    .oneAnime {
+      /* border: 1px solid black; */
+      /* background-color: rgb(51, 48, 48);   */
+      text-align: left;
+      width: 100%;
+      height: 100%;
+      margin: 5px;
+      padding: 5px;
+      object-fit: cover;
+    }
 
-.saveBtn {
-  float: right;
-}
+    .saveBtn {
+      float: right;
+    }
 
-.borderBottom {
-  border-bottom: 1px dotted rgb(41, 228, 135);
-  padding-bottom: 20px;
-  padding-top: 20px;
-}
+    .borderBottom {
+      border-bottom: 1px dotted rgb(41, 228, 135);
+      padding-bottom: 20px;
+      padding-top: 20px;
+    }
 
-img {
-  width: 200px;
-  height: auto;
-  border: 1px solid black;
-  float: left;
-  padding: 0px;
-  margin-right: 10px;
-  display: block;
-}
+    img {
+      width: 200px;
+      height: auto;
+      border: 1px solid black;
+      float: left;
+      padding: 0px;
+      margin-right: 10px;
+      display: block;
+    }
 
-h2 {
-  padding: 0px;
-  margin: 10px;
-}
-h3 {
-  padding: 0px;
-  margin: 0px;
-}
+    h2 {
+      padding: 0px;
+      margin: 10px;
+    }
 
-h4 {
-  padding: 0px;
-  margin: 0px;
-}
+    h3 {
+      padding: 0px;
+      margin: 0px;
+    }
 
-.searchBar {
-  width: 300px;
-  float: left;
-  padding-right: 10px;
-}
+    h4 {
+      padding: 0px;
+      margin: 0px;
+    }
 
-.fade-in {
-  animation: fadeIn ease 5s;
-  -webkit-animation: fadeIn ease 5s;
-  -moz-animation: fadeIn ease 5s;
-  -o-animation: fadeIn ease 5s;
-  -ms-animation: fadeIn ease 5s;
-}
-@keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
+    .searchBar {
+      width: 300px;
+      float: left;
+      padding-right: 10px;
+    }
 
-@-moz-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
+    .fade-in {
+      animation: fadeIn ease 5s;
+      -webkit-animation: fadeIn ease 5s;
+      -moz-animation: fadeIn ease 5s;
+      -o-animation: fadeIn ease 5s;
+      -ms-animation: fadeIn ease 5s;
+    }
 
-@-webkit-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
 
-@-o-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
+      100% {
+        opacity: 1;
+      }
+    }
 
-@-ms-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
-}
+    @-moz-keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
 
-</style>
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @-webkit-keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @-o-keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @-ms-keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 
   <!-- Dropdown Structure -->
+
+ 
+
   <ul class="h-menu bg-black fg-white">
     <li><a href="./index.html">
-      <span class="mif-home mif-lg fg-teal"></span>
-      Home
-    </a></li>
+        <span class="mif-home mif-lg fg-teal"></span>
+        Home
+      </a></li>
     <li class="divider"></li>
     <li><a href="./creators.html">
-      <span class="mif-users mif-lg fg-pink"></span>
-      Creators
-    </a></li>
+        <span class="mif-users mif-lg fg-pink"></span>
+        Creators
+      </a></li>
     <li>
       <a href="#" class="dropdown-toggle bg-black fg-white">
         <span class="mif-user mif-lg fg-amber"></span>
         Username<span class="mif-arrow-drop-down fg-amber"></span></a>
       <ul class="d-menu bg-black fg-white" data-role="dropdown">
         <li><a href="./profile.html">
-          <span class="mif-profile mif-lg fg-violet"></span>
-          Profile</a></li>
+            <span class="mif-profile mif-lg fg-violet"></span>
+            Profile</a></li>
         <li><a href="./login.html">
             <span class="mif-user-check mif-lg fg-lime"></span>
             Sign In</a></li>
         <li><a href="./register.html">
-              <span class="mif-user-plus mif-lg fg-yellow"></span>
+            <span class="mif-user-plus mif-lg fg-yellow"></span>
             Create Account</a></li>
         <li><a href="./index.html">
-          <span class="mif-cross mif-lg fg-red"></span>
-          Sign Out
-        </a></li>
+            <span class="mif-cross mif-lg fg-red"></span>
+            Sign Out
+          </a></li>
       </ul>
     </li>
   </ul>
 
   <!-- <div class="navview-content"> -->
-    <div data-role="carousel" data-height="300px" data-auto-start="true" data-cls-controls="fg-white"
-      data-control-next="<span class='mif-chevron-right'></span>"
-      data-control-prev="<span class='mif-chevron-left'></span>">
+  <div data-role="carousel" data-height="300px" data-auto-start="true" data-cls-controls="fg-white"
+    data-control-next="<span class='mif-chevron-right'></span>"
+    data-control-prev="<span class='mif-chevron-left'></span>">
 
-        <div class="slide" data-cover="https://pbs.twimg.com/media/EzXe_zSUYAIh45q.jpg"></div>
+    <div class="slide" data-cover="https://pbs.twimg.com/media/EzXe_zSUYAIh45q.jpg"></div>
+    <div class="slide" data-cover="https://i.pinimg.com/originals/e0/4f/b5/e04fb53e97ff1656bc0ddb9e50b139a6.jpg"></div>
+    <div class="slide" data-cover="https://static.tumblr.com/gpbjshz/mm7nx60jz/3.png"></div>
+  </div>
 
-      <div class="slide" data-cover="https://i.pinimg.com/originals/e0/4f/b5/e04fb53e97ff1656bc0ddb9e50b139a6.jpg"></div>
-      <div class="slide" data-cover="https://static.tumblr.com/gpbjshz/mm7nx60jz/3.png"></div>
-    </div>
-    
-    <div class="container yellow">
-      <h2 class="center-align title">Anime Search</h2>
-      <div class="row">
-        <div class="col l12 class center-align">
-          <!-- <a href="/saved">Saved </a> -->
-          <form>
-            <p>
-            <div class="searchBar">
-              <input class="center-align" type="text" name="search" id="searchInfo" placeholder="Search for Anime...">
-            </div>
-    
-            </p>
-            <button class="button success outline" id="search">Search</button>
-          </form>
-        </div>
+  <div class="container yellow">
+    <h2 class="center-align title">Anime Search</h2>
+    <div class="row">
+      <div class="col l12 class center-align">
+        <!-- <a href="/saved">Saved </a> -->
+        <form>
+          <p>
+          <div class="searchBar">
+            <input class="center-align" type="text" name="search" id="searchInfo" placeholder="Search for Anime...">
+          </div>
+
+          </p>
+          <button class="button success outline" id="search">Search</button>
+        </form>
       </div>
-    
-      <div class="row" id="results"></div>
-      <div class="row" id="more"></div>
-    
     </div>
+
+    <div class="row" id="results"></div>
+    <div class="row" id="more"></div>
+
+  </div>
 
   <!-- </div>
 </div> -->
 
 
-<!-- <header>hhhhhh</header> -->
+  <!-- <header>hhhhhh</header> -->
 
-
+ <!-- <div class="word">This is where you search for your anime</div> -->
 
   <!-- Metro4 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -258,16 +294,16 @@ h4 {
             searchElem.classList = " ";
 
             // what is going to be appended on the page from API information//
-              // <button class="mif-add data-index="${searchId}"></button>
+            // <button class="mif-add data-index="${searchId}"></button>
 
-              
+
             searchElem.innerHTML =
               `
               <div class="oneAnime borderBottom">
               <div class="fade-in">
               <img src='${searchURL}' alt='${searchTitle}'">
               </div>
-              <button class"button link saveBtn">
+              <button class="button primary">
                 <i class="mif-add fg-green mif-5x" data-index="${searchId}"></i>
               </button>
               <h3>${searchTitle}</h3>
@@ -384,8 +420,8 @@ h4 {
 
   </script>
 
-    <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
 
 </html>
