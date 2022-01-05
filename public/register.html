@@ -271,21 +271,28 @@
         <div class="container">
           <div class="box">
             <span></span>
+
             <div class="content">
-              <label for="rFistname" class="form-label">First name</label>
-              <input type="text" class="form-control" id="rFirstname">
-              <label for="rLastname" class="form-label">Last name</label>
-              <input type="text" class="form-control" id="rLastname">
-              <label for="rUsername" class="form-label">Username</label>
-              <input type="text" class="form-control" id="rUsername">
-              <label for="rEmail" class="form-label">Email</label>
-              <input type="email" class="form-control" id="rEmail">
+                <form>
+                <label for="rFistname" class="form-label">First name</label>
+                <input type="text" class="form-control" id="rFirstname">
+                <label for="rLastname" class="form-label">Last name</label>
+                <input type="text" class="form-control" id="rLastname">
+                <label for="rUsername" class="form-label">Username</label>
+                <input type="text" class="form-control" id="rUsername">
+                <label for="rEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="rEmail">
+                
+                <label for="rPassword" class="form-label">Password</label>
+                <input type="password" class="form-control" id="rPassword">
+                
+                <div class="d-flex flex-justify-between">
+                  <a id="register" href="./register.html">Register</a>
+                  <a id="login" href="./login.html">Login</a>
+                </div>
+              </form>
+              </div>
 
-              <label for="rPassword" class="form-label">Password</label>
-              <input type="password" class="form-control" id="rPassword">
-
-              <a id="register" href="./register.html">Register</a>
-            </div>
           </div>
 
         </div>
@@ -314,15 +321,18 @@
           document.getElementById('rUsername').value = ''
           document.getElementById('rEmail').value = ''
           document.getElementById('rPassword').value = ''
+          // alert('User Created')
         })
+        .catch(err =>alert('Invalid Inputs'))
+    
     }
 
     document.getElementById('register').addEventListener('click', event => {
       event.preventDefault()
       registerUser()
     })
-
-  </script>
+  
+    </script>
 </body>
 
 </html>
