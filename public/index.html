@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- BOOTSTRAP -->
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
 
   <!-- MATERIALIZE -->
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -14,7 +18,7 @@
   <link href="metro-icons.css" rel="stylesheet">
 
 
-  <!-- <link rel="stylesheet" href="index.css"> -->
+  <link rel="stylesheet" href="index.css">
 
   <title>Anime</title>
   <style>
@@ -250,6 +254,8 @@
     </form>
       </div>
     </div>
+  </div>
+  <div class="container">
 
     <div class="row" id="results"></div>
     <br>
@@ -465,48 +471,13 @@
   })
 
 
-
-
-
-
-
-
-
-            // what is going to be appended on the page from API information//
-            // <button class="mif-add data-index="${searchId}"></button>
-
-
-            searchElem.innerHTML =
-              `
-              <div class="oneAnime borderBottom">
-              <div class="fade-in">
-              <img src='${searchURL}' alt='${searchTitle}'">
-              </div>
-              <button class="button primary">
-                <i class="mif-add fg-green mif-5x" data-index="${searchId}"></i>
-              </button>
-              <h3>${searchTitle}</h3>
-              <h4>Rating: ${searchScore}</h4>
-              <p><strong>Synopsis</strong>: ${searchSynopsis}</p>
-              </div>
-              `;
-
-
-
-
-
-
-
-
-
-
-
+    
+    // function for logout user to remove from local storage and send back to login screen
     async function logoutUser() {
       localStorage.removeItem('username')
       localStorage.removeItem('token')
       location = '/login.html'
     }
-
     document.getElementById('logout').addEventListener('click', logoutUser)
    
     
@@ -521,8 +492,6 @@
 
   </script>
 
-  <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
 
 </html>
