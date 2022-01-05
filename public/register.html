@@ -2,48 +2,36 @@
 <html lang="en">
 
 <head>
-<<<<<<< HEAD
-<<<<<<< HEAD
- <meta charset="UTF-8">
- <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
- <link rel="stylesheet" href="style.css">
- <title>Document</title>
-=======
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
-<link href="metro-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
+  <link href="metro-icons.css" rel="stylesheet">
   <title>Document</title>
->>>>>>> b026d1da4e49a817c37f0acf8ba9bf0ee60ccd63
 </head>
 <style>
-  *
-{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: consolas;
-}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: consolas;
+  }
 
-body {
-  background-color: black;
-  color: white;
-}
+  body {
+    background-color: black;
+    color: white;
+  }
 
-img {
-  /* width: 60%; */
-  margin: auto;
-  display: block;
-  opacity: 0.6;
-}
+  img {
+    /* width: 60%; */
+    margin: auto;
+    display: block;
+    opacity: 0.6;
+  }
 
-img:hover {
-  opacity: 9;
-}
+  img:hover {
+    opacity: 9;
+  }
 
   .container {
     display: flex;
@@ -95,13 +83,12 @@ img:hover {
     transition: 0.5s;
     filter: blur(30px);
   } */
-/* 
+  /* 
   .container .box:hover:before,
   .container .box:hover:after {
     transform: skewX(0deg);
     left: 20px;
     width: calc(100% - 90px);
-
   } */
 
   .container .box:nth-child(1):before,
@@ -228,9 +215,8 @@ img:hover {
     border: 1px solid rgba(255, 0, 88, 0.4);
     box-shadow: 0 1px 15px rgba(1, 1, 1, 0.2);
   } */
-
-
 </style>
+
 <body>
   <div class="container">
     <div class="row">
@@ -241,102 +227,31 @@ img:hover {
         <h3>Register New Account</h3>
         <hr>
 
-    <div class="container">
-    
-      <div class="box">
-        <span></span>
-        <div class="content">
-          <label for="rFistname" class="form-label">First name</label>
-          <input type="text" class="form-control" id="rFirstname">
-          <label for="rLastname" class="form-label">Last name</label>
-          <input type="text" class="form-control" id="rLastname">
-          <label for="rUsername" class="form-label">Username</label>
-          <input type="text" class="form-control" id="rUsername">
-          <label for="rEmail" class="form-label">Email</label>
-          <input type="email" class="form-control" id="rEmail">
-        
-          <label for="rPassword" class="form-label">Password</label>
-          <input type="password" class="form-control" id="rPassword">
-        
-          <a id="register" href="./register.html">Register</a>
+        <div class="container">
+
+          <div class="box">
+            <span></span>
+            <div class="content">
+              <label for="rFistname" class="form-label">First name</label>
+              <input type="text" class="form-control" id="rFirstname">
+              <label for="rLastname" class="form-label">Last name</label>
+              <input type="text" class="form-control" id="rLastname">
+              <label for="rUsername" class="form-label">Username</label>
+              <input type="text" class="form-control" id="rUsername">
+              <label for="rEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" id="rEmail">
+
+              <label for="rPassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="rPassword">
+
+              <a id="register" href="./register.html">Register</a>
+            </div>
+          </div>
+
         </div>
-      </div>
-    
-    </div>
 
       </div>
     </div>
-<<<<<<< HEAD
-    <h3>Register New Account</h3>
-    <hr>
-    <form>
-     <div class="mb-3">
-      <label for="rFistname" class="form-label">First name</label>
-      <input type="text" class="form-control" id="rFirstname">
-
-      <label for="rLastname" class="form-label">Last name</label>
-      <input type="text" class="form-control" id="rLastname">
-
-      <label for="rUsername" class="form-label">Username</label>
-      <input type="text" class="form-control" id="rUsername">
-
-     </div>
-     <div class="mb-3">
-      <label for="rEmail" class="form-label">Email</label>
-      <input type="email" class="form-control" id="rEmail">
-     </div>
-     <div class="mb-3">
-      <label for="rPassword" class="form-label">Password</label>
-      <input type="password" class="form-control" id="rPassword">
-     </div>
-     <button id="register" type="submit" class="btn btn-primary">Register</button>
-    </form>
-   </div>
-  </div>
- </div>
- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
- <script>
-  function registerUser() {
-   let newUser = {
-    username: document.getElementById('rUsername').value,
-    email: document.getElementById('rEmail').value,
-    password: document.getElementById('rPassword').value
-   }
-   axios.post('/api/users/register', newUser)
-    .then(res => {
-     console.log('user created')
-     document.getElementById('rUsername').value = ''
-     document.getElementById('rEmail').value = ''
-     document.getElementById('rPassword').value = ''
-    })
-  }
-
-  document.getElementById('register').addEventListener('click', event => {
-   event.preventDefault()
-   registerUser()
-  })
-
-  function loginUser() {
-   let oldUser = {
-    username: document.getElementById('lUsername').value,
-    password: document.getElementById('lPassword').value
-   }
-   axios.post('/api/users/login', oldUser)
-    .then(res => {
-     console.log(res)
-     localStorage.setItem('token', res.data.token)
-     location = '/'
-
-    })
-  }
-
-  document.getElementById('login').addEventListener('click', event => {
-   event.preventDefault()
-   loginUser()
-  })
-=======
   </div>
   <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -361,7 +276,6 @@ img:hover {
           document.getElementById('rPassword').value = ''
         })
     }
->>>>>>> b026d1da4e49a817c37f0acf8ba9bf0ee60ccd63
 
     document.getElementById('register').addEventListener('click', event => {
       event.preventDefault()
@@ -372,89 +286,3 @@ img:hover {
 </body>
 
 </html>
-=======
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
-  <title>Document</title>
-</head>
-
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="register-form">
-        <div class="register-form_logo">
-          <img class="register-form_logo" src="/assets/register-anime.gif" alt="logo">
-        </div>
-        <h3>Register New Account</h3>
-        <hr>
-        <form>
-          <div class="mb-3">
-            <label for="rFistname" class="form-label">First name</label>
-            <input type="text" class="form-control" id="rFirstname">
-          </div>
-
-          <div class="mb-3">
-            <label for="rLastname" class="form-label">Last name</label>
-            <input type="text" class="form-control" id="rLastname">
-          </div>
-
-          <div class="mb-3">
-            <label for="rUsername" class="form-label">Username</label>
-            <input type="text" class="form-control" id="rUsername">
-          </div>
-
-          <div class="mb-3">
-            <label for="rEmail" class="form-label">Email</label>
-            <input type="email" class="form-control" id="rEmail">
-          </div>
-
-          <div class="mb-3">
-            <label for="rPassword" class="form-label">Password</label>
-            <input type="password" class="form-control" id="rPassword">
-          </div>
-
-          <button id="register" type="submit" class="btn btn-primary">Register</button>
-        </form>
-      </div>
-    </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-  <script>
-
-    function registerUser() {
-      let newUser = {
-        firstName: document.getElementById('rFirstname').value,
-        lastName: document.getElementById('rLastname').value,
-        username: document.getElementById('rUsername').value,
-        email: document.getElementById('rEmail').value,
-        password: document.getElementById('rPassword').value
-      }
-
-      console.log(newUser)
-
-      axios.post('/api/users/register', newUser)
-        .then(res => {
-          console.log('user created')
-          document.getElementById('rUsername').value = ''
-          document.getElementById('rEmail').value = ''
-          document.getElementById('rPassword').value = ''
-        })
-    }
-
-    document.getElementById('register').addEventListener('click', event => {
-      event.preventDefault()
-      registerUser()
-    })
-
-  </script>
-</body>
-
-</html>
->>>>>>> f63a4e36a763e831c11fbe4d4073af87ced4f9d7
