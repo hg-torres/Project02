@@ -59,6 +59,7 @@ function searchFnc() {
   }`;
 
   // Define our query variables and values that will be used in the query request
+  
   var variables = {
     search: document.getElementById('searchInput').value,
     page: 1,
@@ -92,14 +93,17 @@ function searchFnc() {
 
   function handleData(data) {
     console.log(data);
-
-
   }
 
   function handleError(error) {
     alert('Error, check console');
     console.error(error);
   }
-
-
 }
+
+document.getElementById('searchBtn').addEventListener('click', event =>{
+  event.preventDefault()
+  console.log(document.getElementById('searchInput').value)
+  searchFnc()
+  
+})
