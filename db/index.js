@@ -1,3 +1,6 @@
 const { Sequelize } = require('sequelize')
 
-module.exports = new Sequelize('mysql://root:rootroot@localhost:3306/anime_db')
+module.exports = new Sequelize(process.env.JAWSDB_URL || process.env.LOCALDB_URL)
+
+
+
