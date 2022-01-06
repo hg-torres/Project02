@@ -640,19 +640,21 @@
           console.log(data);
 
 
-
-
           let anime = data.Page.media
           anime.forEach(anime => {
             let synopsis = anime.description
             let unquotedSynopsis = synopsis.replace(/["]+/g, '')
             let genres = anime.genres
+
+
+            let rating = anime.averageScore
+            let engTitle = anime.title.english
+            let japTitle = anime.title.romanji
+            let searchImg = anime.coverImage.large
+
             // peters changes
             let trendingId = anime.id
-            let stringId = trendingId.toString()
-            let unspaceId = stringId.replace(/[ ]+/g, '')
-
-
+            
 
             let trendingList = document.getElementById(sort)
 
@@ -679,9 +681,38 @@
               <div></div>
               "
               >
-              <button class="button link mt-1 fg-green saveBtn2 ${unspaceId}">+</button>
+              <button class="button link mt-1 fg-green saveBtn2" data-index="${trendingId}">+</button>
             </div>
             `
+
+
+              document.addEventListener('click', event => {
+                const index = parseInt(event.target.dataset.index)
+                
+
+                if (event.target.className === 'button link mt-1 fg-green saveBtn2' && index == trendingId) {
+                  console.log(index)
+                  
+
+                  // console.log(searchResults)
+                  const anime = {
+                    title: `${engTitle}`,
+                    image: `${searchImg}`,
+                    rating: `${rating}`,
+                    synopsis: `${unquotedSynopsis}`
+                  }
+                  console.log(anime)
+
+                  axios.post('/api/animes', anime, {
+                    headers: {
+                      'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    }
+                  })
+                    .then(() => console.log(`anime saved`))
+                    .catch(err => location = 'login.html')
+                }
+              });
+
             }
             else {
               trendingAnime.innerHTML = `
@@ -698,44 +729,40 @@
               <p>${unquotedSynopsis}</p>
               "
               >
-              <button class="button link mt-1 fg-green saveBtn2 ${unspaceId}">+</span></button>
+              <button class="button link mt-1 fg-green saveBtn2 data-index="${trendingId}">+</span></button>
             </div>
             `
+                   // peters changes
+              document.addEventListener('click', event => {
+           
+                const index = parseInt(event.target.dataset.index)
+            
+                if (event.target.className === 'button link mt-1 fg-green saveBtn2' && index == trendingId) {
+
+                  // console.log(searchResults)
+                  const anime = {
+                    title: `${japTitle}`,
+                    image: `${searchImg}`,
+                    rating: `${rating}`,
+                    synopsis: `${unquotedSynopsis}`
+                  }
+                  console.log(anime)
+
+                  axios.post('/api/animes', anime, {
+                    headers: {
+                      'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    }
+                  })
+                    .then(() => console.log(`anime saved`))
+                    .catch(err => location = 'login.html')
+                }
+              });
+
+
+
             }
 
-            // peters changes
-             document.addEventListener('click', event => {
-              console.log(unspaceId)
-              const index = parseInt(event.target.dataset.value)
-              console.log(event.target.dataset.index)
-              
-
-              if (event.target.className === 'button link mt-1 fg-green saveBtn2' && index == unspaceId) {
-                console.log(index)
-                console.log(searchId)
-
-                // console.log(searchResults)
-                const anime = {
-                  title: `${searchTitle}`,
-                  image: `${searchURL}`,
-                  rating: `${searchScore}`,
-                  synopsis: `${unquotedSynopsis}`
-                }
-                console.log(anime)
-
-                axios.post('/api/animes', anime, {
-                  headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`
-                  }
-                })
-                  .then(() => console.log(`anime saved`))
-                  .catch(err => location = 'login.html')
-              }
-            });
-
-
-
-
+    
             trendingList.append(trendingAnime)
           })
         }
