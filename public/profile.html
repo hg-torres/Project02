@@ -12,7 +12,9 @@
   <title>Document</title>
 </head>
 <body>
- 
+
+
+
   <!-- nav bar -->
   <ul class="h-menu bg-black fg-white">
     <li><a href="./index.html">
@@ -39,35 +41,32 @@
             <span class="mif-user-plus mif-lg fg-yellow"></span>
             Create Account</a></li>
         <li>
-          <a id="logout" class="mif-cross mif-lg fg-red" href="#">Log Out</a>
+          <a id="logout" class="mif-cross mif-lg fg-red" href="#">  Log Out</a>
           </a>
         </li>
       </ul>
     </li>
   </ul>
-<div class="remark dark fg-gray">
-<h1>Profile</h1>
-</div>
-
-<table id="table" class="table">
-  <thead class="fg-white">
-    <tr class="fg-white">
-      <th class="fg-white">#</th>
-      <th class="fg-white">Title</th>
-      <th class="fg-white">Synopsis</th>
-      <th class="fg-white"></th>
-      <th class="fg-white">Rating</th>
-      <th class="fg-white"></th>
-    </tr>
-  </thead>
-  <tbody id="tableBody">
     
-  </tbody>
-</table>
+    <div id="title" >
+      <div class="neonText">Profile</div>
+    </div>
+<div id="mainPage" class="container">
+<h2>Your Saved Animes:</h2>
+    <div>
+    <div id="posts" class="row"></div>
+    </div>
 
+
+  <div id="bottomButton">
+    <button type="button" onclick="window.location.href='index.html'"class="button info outline large rounded ">
+        <span class="mif-search mif-lg fg-aqua"></span>
+        Grow your list!
+    </button>
+  </div>
 </div>
-<div id="posts" class="row"></div>
-</div>
+
+
 
 
 <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
@@ -105,7 +104,7 @@
    // delete button to remove saved anime from database
     document.addEventListener('click', event => {
 
-      if (event.target.className === 'delete') {
+      if (event.target.className === 'button alert outline mif-cross-light fg-red') {
         const index = parseInt(event.target.dataset.index)
         console.log(index)
         axios.delete(`./api/animes/${index}`, {
@@ -126,23 +125,22 @@
 
     async function renderPost({ id, title, image, rating, synopsis }) {
       const animeElem = document.createElement('div')
-      animeElem.innerHTML = ''
+      // animeElem.id = "results"
       animeElem.innerHTML = `
-  <div class="container">
-    <div class="card image-header bg-black">
-      <div class="card-header fg-white "style="background-image: url('${image}')">
-         <h2>${title}</h2>
-         <h6>Rating: ${rating}</h6>
-    </div>
-    <div class="card-content p-2">
-        <p class="fg-gray">Added on: ${date}</p>
-      <p>Synopsis: ${synopsis}</p>
-    </div>
-    <div class="card-footer">
-        <button class="delete" data-index =${id}> Remove </button>
-    </div>
-</div>
-</div>
+        <div id ="results">
+          <div class="fade-in">
+            <br>
+          <img class="img"src='${image}' alt='${title}'">
+          </div>
+          <h3>${title}</h3>
+          <h4>Rating:<span class="mif-star-full fg-yellow"></span> ${rating}</h4>
+          <p><strong>Synopsis</strong>: ${synopsis}</p>
+          <h6 class="fg-darkGray"> Added on: ${date}</h6> 
+      
+        </div>
+       
+          <button id="deleteButton" class="button alert outline mif-cross-light fg-red mx-auto" data-index =${id}>Remove X </button>
+      
       `
       document.getElementById('posts').prepend(animeElem)
     }
@@ -163,16 +161,7 @@
           }
           renderUsername()
 
-          renderPosts()
-          
-
-
-         
-
-  
-  
-  
-  
+          renderPosts()  
 </script>
 
 </body>
