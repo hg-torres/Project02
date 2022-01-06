@@ -5,16 +5,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link href="reset.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
- 
-  <link rel="stylesheet" href="profile.css">
+  <link href="metro-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/profile.css">
 
-  <title>Document</title>
+  <title>Profile</title>
 </head>
+<style>
+  
+</style>
 <body>
-
-
-
+ 
   <!-- nav bar -->
   <ul class="h-menu bg-black fg-white">
     <li><a href="./index.html">
@@ -41,118 +44,37 @@
             <span class="mif-user-plus mif-lg fg-yellow"></span>
             Create Account</a></li>
         <li>
-          <a id="logout" class="mif-cross mif-lg fg-red" href="#">  Log Out</a>
+          <a id="logout" class="mif-cross mif-lg fg-red" href="#">Log Out</a>
           </a>
         </li>
       </ul>
     </li>
   </ul>
-    
-    <div id="title" >
-      <div class="neonText">Profile</div>
-    </div>
+
+<!-- <h1>Profile</h1>
+
+
+</div>
+<div id="posts" class="row"></div>
+</div> -->
+
+<div id="title">
+  <div class="neonText">Profile</div>
+</div>
 <div id="mainPage" class="container">
-<h2>Your Saved Animes:</h2>
-    <div>
+  <h2>Your Saved Animes:</h2>
+  <div>
     <div id="posts" class="row"></div>
-    </div>
+  </div>
 
 
   <div id="bottomButton">
-    <button type="button" onclick="window.location.href='index.html'"class="button info outline large rounded ">
-        <span class="mif-search mif-lg fg-aqua"></span>
-        Grow your list!
+    <button type="button" onclick="window.location.href='index.html'" class="button info outline large rounded ">
+      <span class="mif-search mif-lg fg-aqua"></span>
+      Grow your list!
     </button>
   </div>
 </div>
-
-
-
-
-<script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-<script>
-  // const today = new Date();
-
-  // var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-
-  var date = Date();
-  
-  // function for logout user to remove from local storage and send back to login screen
-  async function logoutUser() {
-    localStorage.removeItem('username')
-    localStorage.removeItem('token')
-    location = '/login.html'
-  }
-  document.getElementById('logout').addEventListener('click', logoutUser)
-  
-  
-    // allows profile to be rendered using token, if not sent back to login screen
-      async function getProfile() {
-        try {
-          const { data: user } = await axios.get('/api/users/profile', {
-            headers: {
-              'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-          })
-          return user
-
-        } catch (err) {
-          location = '/login.html'
-        }
-      }
-  
-   // delete button to remove saved anime from database
-    document.addEventListener('click', event => {
-
-      if (event.target.className === 'button alert outline mif-cross-light fg-red mx-auto') {
-        const index = parseInt(event.target.dataset.index)
-        console.log(index)
-        axios.delete(`./api/animes/${index}`, {
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
-          }
-        })
-          .then(() => {
-
-            console.log(event.target.parentNode)
-            event.target.parentNode.innerHTML = ''
-
-            console.log('Anime Deleted')
-          })
-          .catch(err => console.log(err))
-      }
-    })
-
-    async function renderPost({ id, title, image, rating, synopsis }) {
-      const animeElem = document.createElement('div')
-      // animeElem.id = "results"
-      animeElem.innerHTML = `
-        <div id ="results">
-          <div class="fade-in">
-            <br>
-          <img class="img"src='${image}' alt='${title}'">
-          </div>
-          <h3>${title}</h3>
-          <h4>Rating:<span class="mif-star-full fg-yellow"></span> ${rating}</h4>
-          <p><strong>Synopsis</strong>: ${synopsis}</p>
-          <h6 class="fg-darkGray"> Added on: ${date}</h6> 
-      
-        </div>
-       
-        <button id="deleteButton" class="button alert outline mif-cross-light fg-red mx-auto" data-index =${id}>Remove X </button>
-      
-      `
-      document.getElementById('posts').prepend(animeElem)
-    }
-
-    async function renderPosts() {
-
-      const { animes } = await getProfile()
-      animes.forEach(anime => renderPost(anime))
-
-    }
 
 
         // function to retrieve username from local storage. Used to Show name for profile
@@ -163,8 +85,11 @@
           }
           renderUsername()
 
-          renderPosts()  
-</script>
+
+
+<script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/profile.js"></script>
 
 </body>
 </html>

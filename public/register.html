@@ -5,9 +5,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="reset.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
   <link href="metro-icons.css" rel="stylesheet">
-  <title>Document</title>
+
+  <link rel="stylesheet" href="./css/register.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+  <title>Register</title>
 </head>
 <style>
   * {
@@ -302,37 +306,8 @@
   </div>
   <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script>
-
-    function registerUser() {
-      let newUser = {
-        firstName: document.getElementById('rFirstname').value,
-        lastName: document.getElementById('rLastname').value,
-        username: document.getElementById('rUsername').value,
-        email: document.getElementById('rEmail').value,
-        password: document.getElementById('rPassword').value
-      }
-
-      console.log(newUser)
-
-      axios.post('/api/users/register', newUser)
-        .then(res => {
-          console.log('user created')
-          document.getElementById('rUsername').value = ''
-          document.getElementById('rEmail').value = ''
-          document.getElementById('rPassword').value = ''
-          // alert('User Created')
-        })
-        .catch(err =>alert('Invalid Inputs'))
-    
-    }
-
-    document.getElementById('register').addEventListener('click', event => {
-      event.preventDefault()
-      registerUser()
-    })
+  <script src="/js/register.js"></script>
   
-    </script>
 </body>
 
 </html>
