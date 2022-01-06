@@ -18,7 +18,7 @@
       /* background-image: url('https://images.hdqwalls.com/download/yuji-itadori-anime-boy-5k-ph-5120x2880.jpg'); */
       background-color: black;
       color: white;
-      font-family: consolas;
+      font-family: 'Inconsolata', monospace;
     }
   
     header {
@@ -113,8 +113,10 @@
     }
 
     .more {
+      /* margin-left: 5px; */
+      float: right;
       margin-top:20px;
-      align-items: center;
+      text-align: right;
     }
 
 
@@ -144,6 +146,46 @@
   border: 1px solid #60a917;
 }
 
+  .neon {
+    font-size: 100px;
+  text-align: center;
+  color: #fff;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px #fff,
+    0 0 40px rgb(27, 240, 44),
+    0 0 80px rgb(192, 243, 25),
+    0 0 90px #0ff,
+    0 0 100px #0ff,
+    0 0 150px #0ff;
+      margin-top: 90px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 25%;
+    z-index: 99;  
+} 
+
+.quote {
+    margin-top: 190px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    z-index: 99;
+    
+}
+
+h2{
+
+    padding: 0px;
+    margin: 10px;
+    text-align: center;
+    font-size: 15px;
+}
   
   
     @keyframes fadeIn {
@@ -195,6 +237,12 @@
         opacity: 1;
       }
     }
+
+
+
+
+
+
   </style>
 </head>
 
@@ -238,21 +286,31 @@
     data-control-next="<span class='mif-chevron-right'></span>"
     data-control-prev="<span class='mif-chevron-left'></span>">
   
-    <div class="slide" data-cover="https://pbs.twimg.com/media/EzXe_zSUYAIh45q.jpg"></div>
+    <div class="slide" data-cover="/assets/yuji.jpg"></div>
   
-    <div class="slide" data-cover="https://i.pinimg.com/originals/e0/4f/b5/e04fb53e97ff1656bc0ddb9e50b139a6.jpg"></div>
-    <div class="slide" data-cover="https://static.tumblr.com/gpbjshz/mm7nx60jz/3.png"></div>
+    <div class="slide" data-cover="/assets/demonSlayer.jpg"></div>
+    <div class="slide" data-cover="/assets/onePiece.jpg"></div>
   </div>
+
+
+<h1 class="neon">Anime Archive</h1>
+  <h2 class="center-align quote">
+    "The future belongs to those who believe in the beauty of their dreams."<br>
+    - Shoyo Hinata.
+  </h2>
+
+
+
   
   <div class="container yellow">
-    <h2 class="center-align title">Anime Search</h2>
+    <h3 class="center-align title">Anime Search</h3>
     <div class="row">
       <div class="col l12 class center-align">
         <!-- <a href="/saved">Saved </a> -->
         <form>
           <p>
           <div class="searchBar">
-            <input class="center-align" type="text" name="search" id="searchInfo" placeholder="Search for Anime...">
+            <input class="center-align" type="text" name="search" id="searchInfo" placeholder="Search for shows, movies, etc...">
           </div>
   
           </p>
@@ -273,7 +331,7 @@
       <main>
         <section>
           <div class="container grid">
-            <h2 class="mt-4">Trending</h2>
+            <h3 class="mt-4">Trending</h3>
             <hr>
             <div class="row" id="TRENDING_DESC">
             </div>
@@ -281,7 +339,7 @@
         </section>
         <section>
           <div class="container grid">
-            <h2 class="mt-4">Popular</h2>
+            <h3 class="mt-4">Popular</h3>
             <hr>
             <div class="row" id="POPULARITY_DESC">
             </div>
@@ -289,7 +347,7 @@
         </section>
         <section>
           <div class="container grid">
-            <h2 class="mt-4">Highest Rated</h2>
+            <h3 class="mt-4">Highest Rated</h3>
             <hr>
             <div class="row" id="SCORE_DESC">
             </div>
@@ -297,7 +355,7 @@
         </section>
         <section>
           <div class="container grid">
-            <h2 class="mt-4">Most Favorited</h2>
+            <h3 class="mt-4">Most Favorited</h3>
             <hr>
             <div class="row" id="FAVOURITES_DESC">
             </div>
@@ -309,36 +367,7 @@
     </div>
     
 
-  <!-- <h1 class="center-align">Anime Search</h1>
-  <div class="container">
-    <div class="row">
-      <div class="col l12 class center-align" >
-    <a href="/saved">Saved </a>
-    <form >
-      <p>
-        <label for="searchInfo">Search for your anime here!</label>
-        <input class="center-align" type="text" name="search" id="searchInfo">
-      </p>
-      <button id="search">Search</button>
-    </form>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-
-    <div class="row" id="results"></div>
-    <br>
-    
-    
-    
-    
-  </div>
-  <div class="container">
-    <div class= "row" id="more"></div>
-  </div> -->
-
-
-
+  
 
   <!-- METRO4 -->
   <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
@@ -465,21 +494,33 @@
               <div class="fade-in">
               <img src='${searchURL}' alt='${searchTitle}'">
               </div>
-              <button class="button link saveBtn fg-green" data-index="${searchId}">+
+              <button class="button link saveBtn fg-green" data-index="${searchId}"
+              data-role="popover" data-popover-text="Anime Saved!"data-popover-trigger="click">+
               </button>
+
               <h3>${searchTitle}</h3>
-              <h4>Rating: ${searchScore}</h4>
+              <h4>Rating: <span class="mif-star-full fg-yellow"></span> ${searchScore}</h4>
               <p><strong>Synopsis</strong>: ${searchSynopsis}</p>
               </div>
               `;
+
+
+        
+
+
+
 
         // click even to save and push to database using ID/data-index
         document.addEventListener('click', event => {
 
           const index = parseInt(event.target.dataset.index)
           if (event.target.className === 'button link saveBtn fg-green' && index == searchId) {
+            
+
+
             console.log(index)
             console.log(searchId)
+           
 
             // console.log(searchResults)
             const anime = {
@@ -530,7 +571,7 @@
 
     // adds more results button after first search (currently only using 10 results)
     let moreResults = document.createElement('button');
-    moreResults.classList = "more button success outline";
+    moreResults.classList = "more button success";
     moreResults.innerHTML = "More Results";
     moreResults.id = "moreResults"
 
@@ -701,7 +742,8 @@
               <div></div>
               "
               >
-              <button class="button link mt-1 fg-green saveBtn2" data-index="${trendingId}">+</button>
+              <button class="button link mt-1 fg-green saveBtn2" data-index="${trendingId}"
+              data-role="popover" data-popover-text="Anime Saved!"data-popover-trigger="click">+</button>
             </div>
             `
 
@@ -749,7 +791,8 @@
               <p>${unquotedSynopsis}</p>
               "
               >
-              <button class="button link mt-1 fg-green saveBtn2 data-index="${trendingId}">+</span></button>
+              <button class="button link mt-1 fg-green saveBtn2 data-index="${trendingId}"
+              data-role="popover" data-popover-text="Anime Saved!"data-popover-trigger="click">+</span></button>
             </div>
             `
                    // peters changes
