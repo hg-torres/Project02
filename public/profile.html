@@ -73,9 +73,11 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
-  var today = new Date();
+  // const today = new Date();
 
-  var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+  // var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
+  var date = Date();
   
   // function for logout user to remove from local storage and send back to login screen
   async function logoutUser() {
@@ -104,7 +106,7 @@
    // delete button to remove saved anime from database
     document.addEventListener('click', event => {
 
-      if (event.target.className === 'button alert outline mif-cross-light fg-red') {
+      if (event.target.className === 'button alert outline mif-cross-light fg-red mx-auto') {
         const index = parseInt(event.target.dataset.index)
         console.log(index)
         axios.delete(`./api/animes/${index}`, {
@@ -139,7 +141,7 @@
       
         </div>
        
-          <button id="deleteButton" class="button alert outline mif-cross-light fg-red mx-auto" data-index =${id}>Remove X </button>
+        <button id="deleteButton" class="button alert outline mif-cross-light fg-red mx-auto" data-index =${id}>Remove X </button>
       
       `
       document.getElementById('posts').prepend(animeElem)

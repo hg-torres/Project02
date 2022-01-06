@@ -52,9 +52,10 @@ body {
 
 #deleteButton {
   font-size: 18px;
-  position: relative;
-  margin: 1%;
+  position: absolute;
   left: 44%;
+  bottom: 3%
+
 }
 
 #bottomButton {
